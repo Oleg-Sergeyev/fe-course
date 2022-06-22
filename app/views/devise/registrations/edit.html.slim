@@ -1,0 +1,83 @@
+/ .form-group[align="center"]
+/   .container-registration
+/     .row.justify-content-center
+/       .layer-1.mb-4.mt-4.col-8[align="center"]
+/         .row
+/           .col.mb-3.mt-3
+/             h2 = t("label.log_in")
+/           - flash.each do |_type, msg|
+/             .alert.alert-info
+/               = msg
+/         .row    
+/           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+/             .row.gy-1.g-1
+/               .col-sm-5.col-md-4
+/                 span#basic-addon2.input-group-text
+/                   = t('label.email')
+/               .col-sm-7.col-md-8
+/                 .input-group.mb-3#div_input_email
+/                   = f.email_field :email, autofocus: true, autocomplete: "email", id:"input_email", class:"col-6 form-control", placeholder:"user@example.com"
+/             .row      
+/               .mb-1.col.d-flex    
+/                 label.form-label[for="input_email" id="label_wrong_email"] 
+/                   = " "
+/             .row.gy-1.g-1
+/               .col-sm-5.col-md-4
+/                 span#basic-addon2.input-group-text
+/                   = t('label.password')
+/               .col-sm-7.col-md-8
+/                 .input-group.mb-3
+/                   = f.password_field :password, autocomplete: "current-password", class:"col-6 form-control", placeholder:"password"
+/             .row.gy-1.g-1
+/               - if devise_mapping.rememberable?
+/                 .col-sm-7.col-md-7
+/                   .input-group.align-middle.d-inline-block
+/                     = f.check_box :remember_me, class:"form-check-input", value:"", type:"checkbox"
+/                     label.form-check-label.ms-1[for="remember_me"]
+/                       = t("label.remember_me")
+/               .col-sm-5.col-md-5.d-flex.justify-content-end
+/                 button#submit_log_in.submit.btn.btn-secondary[type="submit"]
+/                   = t("label.confirm")
+/         .row.gy-1.g-1
+/           .mt-3.col
+/             = render "devise/shared/links"
+/         .row.gy-1.g-1    
+/           .mb-3.d-flex.justify-content-end
+/             = link_to "#{language_link_name}", toggle_path, class: "btn-localization btn btn-secondary", method: :post
+
+div class = "container mb-3" style = "width: fit-content;"
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .d-flex.justify-content-between
+      = link_to 'Back', :back, class:'link-primary', style:'margin: 5px'
+      = link_to 'Delete',  registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"link-danger", style:'margin: 5px'
+    / .form-group
+    /   = f.label @user.role.name, class:"form-control", placeholder:"Edit name", type:"text"    
+    .form-group
+      = f.label :name
+      = f.text_field :name, class:"form-control", placeholder:"Edit name", type:"text"
+    / .field
+    /   = f.label :avatar
+    /   br
+    /   = f.file_field :avatar    
+    .form-group id='div_input_email'
+      = f.label :email
+      = f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", id:"input_email", placeholder:"Email address", type:"email"
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+            div
+              | Currently waiting confirmation for: 
+              = resource.unconfirmed_email
+      br
+      = f.label " ", id:"label_wrong_email"        
+      small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+    .form-group
+      = f.label :password
+      = f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"New password",type:"password"
+    .form-group
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"Confirm password",type:"password"
+    .form-group
+      = f.label :current_password
+      = f.password_field :current_password, autocomplete: "current-password", class:"form-control", placeholder:"Current password",type:"password"
+    .form-check class="form-check d-flex justify-content-end"
+      = f.submit "Update", data: { confirm: "Are you sure?" }, class: 'btn btn-primary', style: 'margin: 5px'
