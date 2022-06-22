@@ -5,9 +5,11 @@
         .row
           .col.mb-3.mt-3
             h2 = t("label.log_in")
-          - flash.each do |_type, msg|
-            .alert.alert-info
-              = msg
+          - if !flash.empty?
+            .mgs-box.mb-4
+              .alert.alert-info
+                - flash.each do |_type, msg|
+                  = msg
         .row    
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
             .row.gy-1.g-1
@@ -17,10 +19,11 @@
               .col-sm-7.col-md-8
                 .input-group.mb-3#div_input_email
                   = f.email_field :email, autofocus: true, autocomplete: "email", id:"input_email", class:"col-6 form-control", placeholder:"user@example.com"
-            .row      
-              .mb-1.col.d-flex    
-                label.form-label[for="input_email" id="label_wrong_email"] 
-                  = " "
+            #box-email-warning.row.row.gy-1.g-1
+              .col-sm-5.col-md-4
+              .col-sm-7.col-md-8
+                span#label_wrong_email.input-group-text.mb-3
+                  = " "  
             .row.gy-1.g-1
               .col-sm-5.col-md-4
                 span#basic-addon2.input-group-text
@@ -36,7 +39,7 @@
                     label.form-check-label.ms-1[for="remember_me"]
                       = t("label.remember_me")
               .col-sm-5.col-md-5.d-flex.justify-content-end
-                button#submit_log_in.submit.btn.btn-secondary[type="submit"]
+                button#submit_devise.submit.btn.btn-secondary[type="submit"]
                   = t("label.confirm")
         .row.gy-1.g-1
           .mt-3.col

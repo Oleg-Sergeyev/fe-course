@@ -3,6 +3,12 @@ ru:
     formats:
       default: '%d-%m-%Y, %H:%M'
   label:
+    name:            Имя
+    passwords:       Пароли
+    security:        Безопаснось
+    new:             Новый
+    current:         Текущий
+    repeat:          Повтор
     our_address:      Наш адрес
     log_in:           Авторизация
     log_out:          Выход

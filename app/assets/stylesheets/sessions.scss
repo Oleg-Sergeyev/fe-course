@@ -29,3 +29,32 @@
   .btn.btn-secondary.btn-localization:hover{
     border-color: #ffffff;
   }
+
+.alert-info{
+  overflow: hidden;
+}
+.mgs-box{
+  overflow: hidden;
+  height: 105px;
+  transition: height 1s;
+}
+.box-passwords{
+  background-color: #f0f7ff;
+}
+.label-passwords{
+  background-color: #0d6efd;
+  color: white;
+}
+#label_wrong_email{
+  background-color: white;
+  border: none;
+}
+#box-email-warning, #box-password-warning{
+  overflow: hidden;
+  height: 0px;
+}
+#label_wrong_password{
+  background-color: #f0f7ff;
+  border: none;
+  color: red;
+}
