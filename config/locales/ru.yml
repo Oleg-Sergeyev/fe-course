@@ -1,0 +1,168 @@
+ru:
+  time:
+    formats:
+      default: '%d-%m-%Y, %H:%M'
+  label:
+    our_address:      Наш адрес
+    log_in:           Авторизация
+    log_out:          Выход
+    confirm:          Подтвердить
+    come_in:          Войти
+    password:         пароль
+    email:            эл.почта
+    hello:            Привет, %s
+    edit_profile:     Изменить данные
+    registration:     Регистрация
+    role:             Роль
+    otchets:          отчеты
+    create_new_event: Создать новое задание
+    list_events:      Список основных заданий
+    period:           Период
+    display_by:       Отображать по
+    submit:           Применить
+    back:             Назад
+    edit:             Редактировать
+    update:           Изменить
+    save:             Сохранить
+    main_event:       Основное задание
+    new_item:         Новое подзадание
+    localization:     Локализация
+    download_book:    скачать книгу
+    remember_me:      Запомнить меня
+    sign_up:          Зарегистрироваться
+    localization:     Локализация
+    forgot_your_password?: Забыли пароль?
+    didn't_receive_confirmation_instructions?: Не получили инструкций подтверждения?
+    confirmation:     Подтверждение
+    resend_confirmation_instructions: Повторно отправить инструкции по подтверждению регистриации
+    resend:           Повторно отправить
+    send:             Отправить
+    send_me_reset_password_instructions: Вышлите мне инструкцию по сбросу пароля
+    we_create_applications_in_the_Ruby_language: Мы создаем приложения на Ruby
+  messages:
+    authorisation_error: ошибка авторизации
+    user_has_been_banned: пользователь заблокирован!
+    user_has_been_moved: пользователь удален!
+    questions:
+      are_you_sure?:  Вы уверены?      
+  top-menu:
+    home:    Домой
+    stats:   Статистика
+    events:  Задания
+    admin:   Админ-режим
+    about:   О нас
+  activerecord:
+    models:
+      users:    Пользователи
+      user:   Пользователь
+      post:    Сообщение
+      posts:   Сообщения
+      event:   Задание
+      events:  Задания
+      item:    Подзадание
+      items:   Подзадания
+      role:    Роль
+      roles:   Роли 
+      seo:     СЕО
+      comment: Коментарий
+      stats:   Статистика
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: обязательно для заполнения
+              too_short: слишком коротко
+            email:
+              blank: обязательна для заполнения
+        event:
+          attributes:
+            name:
+              blank: обязательно для заполнения
+              too_short: слишком коротко
+            user:
+              required:  не может отсутствовать
+        item:
+          attributes:
+            name:
+              blank: обязательно для заполнения
+              too_short: слишком коротко
+            event:
+              required:  не может отсутствовать
+        role:
+          attributes:
+            name:
+              blank: обязательно для заполнения
+              too_short: слишком коротко
+            event:
+              required:  не может отсутствовать
+        commets:
+          attributes:
+            name:
+              blank:  не может отсутствовать
+
+    attributes:
+      user:
+        id:                    Ид.номер
+        password:              Пароль
+        password_confirmation: Подтверждение пароля
+        email:                 эл.почта
+        name:                  Имя пользователя
+        active:                Статус
+        created_at:            Был создан
+        updated_at:            Был обновлен
+        events_ffd_count:      Выполненные задания
+        events_unffd_count:    Невыполненные задания
+        events_count:          Количество заданий
+        items_count:           Количество подзаданий
+        items_ffd_count:       Выполненные подзадания
+        items_unffd_count:     Невыполненные подзадания
+        avatar:                Аватарка пользователя
+      role:
+        name: Название роли
+        code: Обозначение роли/псевдоним
+      item:
+        id:           Ид.номер
+        name:         Название подзадания
+        event:        Основное задание
+        done:         выполнено
+        finished_at:  завершено
+        editing_item: Изменение подзадания
+        many:         подзаданий
+        one:          подзадание
+        others:       подзадания
+        updated_at:   обновалено
+        created_at:   создано        
+      event:
+        id:           Ид.номер
+        user:         Пользователь
+        name:         Название задания
+        content:      Описание
+        done:         выполнено
+        finished_at:  Завершено
+        list_events:  Список основных заданий
+        list_items:   Список подзадний
+        not_finished: Не завершено
+        finished:     Завершено
+        many:         заданий
+        one:          задание
+        others:       задания
+        updated_at:   Обновалено
+        created_at:   Создано
+      attributes:
+        name:
+          blank: обязательно для заполнения
+      comment:
+        name:       Название комменатрия
+        user:       Пользователь
+        content:    Содержимое комментария
+        created_at: Создан
+        updated_at: Обновален
+      # format:
+      #   "%{attribute} %{message}"
+  active_admin:
+    email: эл.почта
+    role:  роль
+    state: статус

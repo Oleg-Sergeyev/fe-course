@@ -30,4 +30,17 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  time:
+    formats:
+      default: '%d-%m-%Y, %H:%M'
+  label:
+    log_in:           Authentification
+    log_out:          Exit
+    come_in:          Login
+    password:         password
+    email:            email
+    localization:     Localization
+    remember_me:      Remember me
+    confirm:          Submit
+  attributes:
+    email: email
