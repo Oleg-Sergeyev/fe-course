@@ -9,7 +9,7 @@
 :root{
     /* ===== Colors ===== */
     /*--body-color: #E4E9F7;*/
-    --body-color: #FFF;
+    --body-color: #E4E9F7;
     --sidebar-color: #FFF;
     --primary-color: #695CFE;
     --primary-color-light: #F6F5FF;
@@ -319,6 +319,21 @@ body.dark .home .text{
   margin: 20px;
 }
 
+.input-group-text {
+    display: flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #695cfe;
+    /*border: 1px solid #695cfe;*/
+    border-radius: 0.25rem;
+}
+
 body.dark .input-group-text {
     color: var(--text-color);
     background-color: #242526;
@@ -331,5 +346,38 @@ body.dark .form-control{
     border: none;
 }
 input:autofill {
-    background: #fff; /* or any other */
+  background: #fff; /* or any other */
+}
+.form-control:focus {
+  box-shadow: none!important;
+}
+.sidebar header .toggle{
+  background-color: #707070;
+}
+trix-toolbar .trix-button-group button {
+    background-color: #fff;
+  }
+  .trix-content {
+    background-color: #fff;
+  }
+
+  body.dark .trix-content {
+    color: var(--text-color);
+    background-color: #5e6266;
+  }
+  .btn-save{
+    width: 5rem;
+    color: white;
+    border-color: #2936ff;
+    background-image: linear-gradient(180deg, #4649ff, #4a7df4);
+  }
+  body.dark .btn-save{
+    color: #fff;
+    border-color: #b6b6b6;
+    background-image: linear-gradient(180deg, #515153, #838383);
+  }
+  body.dark .btn-save:hover{
+    color: #fff;
+    border-color: #414141;
+    background-image: linear-gradient(180deg, #b4b4b4, #464646);
   }

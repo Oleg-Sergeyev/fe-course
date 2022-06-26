@@ -17,7 +17,13 @@ window.onload = function() {
     }
     if ( users_page.includes(curr_page) == true){
       //console.log(window.location.pathname.split("/"))
+      transition_height()
       left_sidebar()
+      if (document.querySelector(".trix-button-row")) {
+        row_button = document.querySelector('.trix-button-row')
+        row_button.removeChild(document.querySelector('.trix-button-group-spacer'))
+        row_button.style.justifyContent = "start";
+      }
     }
   };
 // Проверка в поле введенного адресса эл.почты 

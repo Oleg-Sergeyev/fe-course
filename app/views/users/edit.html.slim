@@ -1,6 +1,13 @@
-= form_for @user, url: user_edit_path do |f|
+.row.d-flex.justify-content-center
+  .col-6
+    - if !flash.empty?  
+      .mgs-box.ml-3.mr-3
+        .alert.alert-info.d-flex.justify-content-center
+          - flash.each do |_type, msg|
+            = msg
+= form_for @user, url: user_edit_path, method: :patch do |f|
   .field
-    .mb-4.mt-4.col-12[align="start"]
+    .mb-4.mt-2.col-12[align="start"]
       .row.gy-1.g-1
         .col-sm-5.col-md-4
           span#basic-addon2.input-group-text
@@ -23,14 +30,16 @@
           = f.rich_text_area :info, as: :trix_editor
       .box.mt-3.mr-1.mb-2.ml-1
         .row.gy-1.g-1
-          .col-12
-            span#basic-addon2
-              = ''    
-        .row.gy-1.g-1
+          .col.d-flex.justify-content-center
+            /= f.submit 'Save', class: "btn-save"
+            li.nav-link
+              /i.bx.bx-save.icon
+              = f.submit 'Save', class: "nav-link"
+                /span.text.nav-text Save
+        /.row.gy-1.g-1
           .col-sm-5.col-md-4
             span#basic-addon2.input-group-text
               = t('label.current-password')
-          .col-sm-7.col-md-8
+          /.col-sm-7.col-md-8
             .input-group.mb-3
               = f.password_field :current_password, autocomplete: "confirmation", class:"col-6 form-control", placeholder:"password"  
-  = f.submit 'Save'
