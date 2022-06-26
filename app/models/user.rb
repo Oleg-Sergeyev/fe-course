@@ -6,4 +6,6 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :name, length: { maximum: 50, minimum: 2 }
   validates :email, presence: true, uniqueness: true
+
+  has_rich_text :info
 end

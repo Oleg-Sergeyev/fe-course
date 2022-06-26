@@ -114,6 +114,9 @@ GEM
       activesupport (>= 5.0)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
+    image_processing (1.12.2)
+      mini_magick (>= 4.9.5, < 5)
+      ruby-vips (>= 2.0.17, < 3)
     importmap-rails (1.1.2)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
@@ -135,6 +138,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mini_magick (4.11.0)
     mini_mime (1.1.2)
     minitest (5.16.1)
     msgpack (1.5.2)
@@ -229,6 +233,8 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
     ruby-progressbar (1.11.0)
+    ruby-vips (2.1.4)
+      ffi (~> 1.12)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -264,6 +270,8 @@ GEM
     thor (1.2.1)
     tilt (2.0.10)
     timeout (0.3.0)
+    trix-rails (2.4.0)
+      rails (> 4.1)
     turbo-rails (1.1.1)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -294,6 +302,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  actiontext (~> 7.0, >= 7.0.3)
   bootsnap
   bootstrap
   capybara
@@ -301,6 +310,7 @@ DEPENDENCIES
   devise
   devise-i18n
   ffaker
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   jquery-rails
@@ -315,6 +325,7 @@ DEPENDENCIES
   slim-rails
   sprockets-rails
   stimulus-rails
+  trix-rails
   turbo-rails
   tzinfo-data
   web-console

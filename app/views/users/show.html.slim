@@ -1,0 +1,6 @@
+= form_for @user, url: profile_path do |f|
+  .field
+    = f.label :info
+    /= @user.info.to_plain_text
+    = @user.info
+/= render 'layouts/action_text/contents/content', info: @user.info

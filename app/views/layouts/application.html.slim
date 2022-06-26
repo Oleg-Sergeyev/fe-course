@@ -9,12 +9,18 @@ html
     /= stylesheet_link_tag 'application', media: 'all'
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     /= javascript_pack_tag 'application','data-turbolinks-track': 'reload'
+    = stylesheet_link_tag "https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     /= javascript_importmap_tags
   body
-    .wrapper
-      = render "layouts/top_menu"
-      .content
-        = yield
-      .footer
-        = render "layouts/bottom_menu"
+    - if request.path == '/user' || request.path == '/user/edit'
+      = render "layouts/left_menu"
+        /= yield
+    - else
+      .wrapper
+        .header
+        = render "layouts/top_menu"
+        .content
+          = yield
+        .footer
+          = render "layouts/bottom_menu"

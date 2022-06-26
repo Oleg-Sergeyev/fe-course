@@ -1,15 +1,23 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require trix
+//= require_self
 //= require_tree .
 
 window.onload = function() {
-    const pages_auth = ['sign_in', 'sign_out', 'edit']
-    let curr_page = window.location.pathname.split("/").pop()
+    const users_page = ['/user', '/user/edit']
+    const pages_auth = ['/users/sign_in', '/users/sign_out', 'edit']
+    let curr_page = window.location.pathname
+    //console.log(users_page.includes(curr_page))
     if ( pages_auth.includes(curr_page) == true){
-      check_email_input()
+      //check_email_input()
       transition_height()
-      check_inputs_password()
+      // check_inputs_password()
+    }
+    if ( users_page.includes(curr_page) == true){
+      //console.log(window.location.pathname.split("/"))
+      left_sidebar()
     }
   };
 // Проверка в поле введенного адресса эл.почты 
@@ -105,4 +113,34 @@ function set_height_zero(element){
 }
 function clear_block(element){
   element.innerHTML = ""
+}
+
+function left_sidebar(){
+  const body = document.querySelector('body'),
+  sidebar = body.querySelector('nav'),
+  toggle = body.querySelector(".toggle"),
+  searchBtn = body.querySelector(".search-box"),
+  modeSwitch = body.querySelector(".toggle-switch"),
+  localizationSwitch = body.querySelector(".toggle-switch-localization"),
+  modeText = body.querySelector(".mode-text");
+
+toggle.addEventListener("click" , () =>{
+sidebar.classList.toggle("close");
+})
+
+searchBtn.addEventListener("click" , () =>{
+sidebar.classList.remove("close");
+})
+
+modeSwitch.addEventListener("click" , () =>{
+body.classList.toggle("dark");
+
+  // if(body.classList.contains("dark")){
+  //     modeText.innerText = "Light mode";
+  // }else{
+  //     modeText.innerText = "Dark mode";
+      
+  // }
+});
+
 }

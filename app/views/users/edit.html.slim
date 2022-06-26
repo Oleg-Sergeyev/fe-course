@@ -1,0 +1,36 @@
+= form_for @user, url: user_edit_path do |f|
+  .field
+    .mb-4.mt-4.col-12[align="start"]
+      .row.gy-1.g-1
+        .col-sm-5.col-md-4
+          span#basic-addon2.input-group-text
+            = t('label.name')
+        .col-sm-7.col-md-8
+          .input-group.mb-3#div_input_email
+            = f.email_field :name, autofocus: true, autocomplete: "name", id:"input_name", class:"col-6 form-control", placeholder:"vasia_pupkin"
+      .row.gy-1.g-1
+        .col-sm-5.col-md-4
+          span#basic-addon2.input-group-text
+            = t('label.email')
+        .col-sm-7.col-md-8
+          .input-group.mb-3#div_input_email
+            = f.email_field :email, autofocus: true, autocomplete: "email", id:"input_email", class:"col-6 form-control", placeholder:"user@example.com"
+      .row.gy-1.g-1
+        .col-12
+          span#basic-addon2.input-group-text
+            = t('label.info')
+        .col-12
+          = f.rich_text_area :info, as: :trix_editor
+      .box.mt-3.mr-1.mb-2.ml-1
+        .row.gy-1.g-1
+          .col-12
+            span#basic-addon2
+              = ''    
+        .row.gy-1.g-1
+          .col-sm-5.col-md-4
+            span#basic-addon2.input-group-text
+              = t('label.current-password')
+          .col-sm-7.col-md-8
+            .input-group.mb-3
+              = f.password_field :current_password, autocomplete: "confirmation", class:"col-6 form-control", placeholder:"password"  
+  = f.submit 'Save'

@@ -1,0 +1,67 @@
+nav.sidebar.close
+  header
+    .image-text
+      span.image
+        img alt="" src="logo.png" /
+      .text.logo-text
+        span.name Codinglab
+        span.profession Web developer
+    i.bx.bx-chevron-right.toggle
+  .menu-bar
+    .menu
+      li.search-box
+        i.bx.bx-search.icon
+        input placeholder="Search..." type="text" /
+      ul.menu-links
+        li.nav-link
+          a href="#" 
+            i.bx.bx-home-alt.icon
+            span.text.nav-text Dashboard
+        li.nav-link
+          = link_to user_edit_path, method: :get do  
+            i.bx.bx-user-circle.icon
+            span.text.nav-text Profile
+            /<i class='bx bxs-user-circle'></i>
+        li.nav-link
+          a href="#" 
+            i.bx.bx-bar-chart-alt-2.icon
+            span.text.nav-text Revenue
+        li.nav-link
+          a href="#" 
+            i.bx.bx-bell.icon
+            span.text.nav-text Notifications
+        li.nav-link
+          a href="#" 
+            i.bx.bx-pie-chart-alt.icon
+            span.text.nav-text Analytics
+        li.nav-link
+          a href="#" 
+            i.bx.bx-heart.icon
+            span.text.nav-text Likes
+        li.nav-link
+          a href="#" 
+            i.bx.bx-wallet.icon
+            span.text.nav-text Wallets
+    .bottom-content
+      li
+        = link_to toggle_path, method: :post do
+          i.bx.bx-globe.icon
+          span.text.nav-text 
+            = t('label.localization')
+      li
+        = link_to destroy_user_session_path, method: :delete do
+          i.bx.bx-log-out.icon
+          span.text.nav-text
+            = t('label.log_out')
+      li.mode
+        .sun-moon
+          i.bx.bx-moon.icon.moon
+          i.bx.bx-sun.icon.sun
+        span.mode-text.text Dark mode
+        .toggle-switch
+          span.switch
+section.home
+  .text
+    = current_user.name
+  .user-content
+    = yield
