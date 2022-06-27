@@ -38,7 +38,7 @@ en:
     log_out:          Exit
     come_in:          Login
     password:         password
-    email:            email
+    email:            Email
     localization:     Localization
     remember_me:      Remember me
     confirm:          Submit

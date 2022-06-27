@@ -15,7 +15,8 @@ ru:
     confirm:          Подтвердить
     come_in:          Войти
     password:         пароль
-    email:            эл.почта
+    email:            Эл.почта
+    user_info:        Информация о пользователе
     hello:            Привет, %s
     edit_profile:     Изменить данные
     registration:     Регистрация

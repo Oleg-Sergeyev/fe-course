@@ -331,7 +331,7 @@ body.dark .home .text{
     white-space: nowrap;
     background-color: #695cfe;
     /*border: 1px solid #695cfe;*/
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
 }
 
 body.dark .input-group-text {
@@ -380,4 +380,10 @@ trix-toolbar .trix-button-group button {
     color: #fff;
     border-color: #414141;
     background-image: linear-gradient(180deg, #b4b4b4, #464646);
+  }
+  .trix-content{
+    min-height: 10rem;
+  }
+  .bx-user-circle:hover{
+    cursor: pointer;
   }

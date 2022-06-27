@@ -13,4 +13,15 @@ hash_users =
     password: 'user1@example.com',
   }
 
-users = User.create! hash_users
+User.create! hash_users
+
+hash_news = 
+  {
+    header: 'Стартует распродажа',
+    body: 'Распродажа новых лопат',
+    date: DateTime.current.to_date,
+    state: 'created',
+    source: 'Some news'
+  }
+
+News.create! hash_news

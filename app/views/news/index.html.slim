@@ -1,0 +1,11 @@
+.row.gy-1.g-1
+  .m-2
+    table.table.table-striped.table-items
+      - @news.each_with_index do |item, i|
+        tr
+          td = "#{i + 1}"
+          td = item.id
+          td = item.date
+          td = item.source
+          td = item.header
+          td = item.state

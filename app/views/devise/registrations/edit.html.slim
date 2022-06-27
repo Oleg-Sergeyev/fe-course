@@ -13,17 +13,17 @@
         .row    
           = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
             .row.gy-1.g-1
-              .col-sm-5.col-md-4
+              .col-sm-3.col-md-3.col-lg-1
                 span#basic-addon2.input-group-text
                   = t('label.name')
-              .col-sm-7.col-md-8
+              .col-sm-8.col-md-7.col-lg-4
                 .input-group.mb-3#div_input_email
                   = f.email_field :name, autofocus: true, autocomplete: "name", id:"input_name", class:"col-6 form-control", placeholder:"vasia_pupkin"
             .row.gy-1.g-1
-              .col-sm-5.col-md-4
+              .col-sm-3.col-md-3.col-lg-1
                 span#basic-addon2.input-group-text
                   = t('label.email')
-              .col-sm-7.col-md-8
+              .col-sm-8.col-md-7.col-lg-4
                 .input-group.mb-3#div_input_email
                   = f.email_field :email, autofocus: true, autocomplete: "email", id:"input_email", class:"col-6 form-control", placeholder:"user@example.com"
             #box-email-warning.row.gy-1.g-1

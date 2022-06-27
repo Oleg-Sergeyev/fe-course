@@ -1,3 +1,8 @@
+/ = form_for @user, url: user_edit_path do |f|
+/   .field
+/     = f.label :info
+/     /= @user.info.to_plain_text
+/     == @user.info
 .row.d-flex.justify-content-center
   .col-6
     - if !flash.empty?  
@@ -9,23 +14,23 @@
   .field
     .mb-4.mt-2.col-12[align="start"]
       .row.gy-1.g-1
-        .col-sm-5.col-md-4
+        .col-sm-3.col-md-3.col-lg-2
           span#basic-addon2.input-group-text
             = t('label.name')
-        .col-sm-7.col-md-8
+        .col-sm-8.col-md-7.col-lg-4
           .input-group.mb-3#div_input_email
-            = f.email_field :name, autofocus: true, autocomplete: "name", id:"input_name", class:"col-6 form-control", placeholder:"vasia_pupkin"
+            = f.text_field :name, autofocus: true, autocomplete: "name", id:"input_name", class:"col-6 form-control", placeholder:"vasia_pupkin"
       .row.gy-1.g-1
-        .col-sm-5.col-md-4
+        .col-sm-3.col-md-3.col-lg-2
           span#basic-addon2.input-group-text
             = t('label.email')
-        .col-sm-7.col-md-8
+        .col-sm-8.col-md-7.col-lg-4
           .input-group.mb-3#div_input_email
             = f.email_field :email, autofocus: true, autocomplete: "email", id:"input_email", class:"col-6 form-control", placeholder:"user@example.com"
       .row.gy-1.g-1
         .col-12
           span#basic-addon2.input-group-text
-            = t('label.info')
+            = t('label.user_info')
         .col-12
           = f.rich_text_area :info, as: :trix_editor
       .box.mt-3.mr-1.mb-2.ml-1

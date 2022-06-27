@@ -6,7 +6,7 @@
 //= require_tree .
 
 window.onload = function() {
-    const users_page = ['/user', '/user/edit']
+    const users_page = ['/user', '/user/edit', '/user/news']
     const pages_auth = ['/users/sign_in', '/users/sign_out', 'edit']
     let curr_page = window.location.pathname
     //console.log(users_page.includes(curr_page))
@@ -23,6 +23,10 @@ window.onload = function() {
         row_button = document.querySelector('.trix-button-row')
         row_button.removeChild(document.querySelector('.trix-button-group-spacer'))
         row_button.style.justifyContent = "start";
+        row_button.style.flexWrap = "wrap";
+        document.querySelector('.trix-button-group--block-tools').style.marginLeft = "0"
+        document.querySelector('.trix-button-group--file-tools').style.marginLeft = "0"
+        document.querySelector('.trix-button-group--history-tools').style.marginLeft = "0"
       }
     }
   };

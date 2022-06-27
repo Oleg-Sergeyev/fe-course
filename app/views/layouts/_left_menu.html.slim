@@ -6,7 +6,7 @@ nav.sidebar.close
         /img alt="" src="logo.png" /
       .text.logo-text
         span.name Ruby on Rails
-        span.profession New maker
+        span.profession News maker
     i.bx.bx-chevron-right.toggle
   .menu-bar
     .menu
@@ -24,9 +24,9 @@ nav.sidebar.close
             span.text.nav-text Profile
             /<i class='bx bxs-user-circle'></i>
         li.nav-link
-          a href="#" 
+          = link_to user_news_path, method: :get do 
             i.bx.bx-bar-chart-alt-2.icon
-            span.text.nav-text Revenue
+            span.text.nav-text News
         li.nav-link
           a href="#" 
             i.bx.bx-bell.icon

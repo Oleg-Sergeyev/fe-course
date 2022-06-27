@@ -13,7 +13,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     /= javascript_importmap_tags
   body
-    - if request.path == '/user' || request.path == '/user/edit'
+    - if request.path.split('/').include?('user')
       = render "layouts/left_menu"
         /= yield
     - else

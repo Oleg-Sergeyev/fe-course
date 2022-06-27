@@ -1,5 +1,5 @@
 = stylesheet_link_tag 'layouts'
-nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+nav.navbar.navbar-expand-lg
   .container-fluid
     a.navbar-brand[href="#"]
       = link_to_unless_current('FE', { controller: "/home", action: "index" }, class: "nav-link"){ link_to('FE', { controller: "home", action: "index" }, class: "nav-link disabled") }

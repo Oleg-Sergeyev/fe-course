@@ -32,6 +32,8 @@
 
 .alert-info{
   overflow: hidden;
+  background-color: #5441ff;
+  color: #fff;
 }
 .mgs-box{
   overflow: hidden;
@@ -58,3 +60,19 @@
   border: none;
   color: red;
 }
+.navbar,.navbar-expand-lg{
+  background-color: #695cfe;
+}
+.btn.btn-secondary {
+  color: white;
+  background-color: #838282;
+  border-color: #ad9de6;
+  background-image: linear-gradient(180deg, #625abf, #695cfe);
+}
+.btn.btn-secondary:hover {
+  color: white;
+  background-color: #838282;
+  border-color: #554883;
+  background-image: linear-gradient(180deg, #2b2755, #463e99);
+}
+.navbar-nav > li > .dropdown-menu {     background-color: #695cfe;  }
