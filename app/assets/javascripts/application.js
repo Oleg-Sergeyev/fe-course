@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require trix
+//= require actiontext
 //= require_self
 //= require_tree .
 

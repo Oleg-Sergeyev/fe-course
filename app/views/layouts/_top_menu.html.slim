@@ -2,13 +2,13 @@
 nav.navbar.navbar-expand-lg
   .container-fluid
     a.navbar-brand[href="#"]
-      = link_to_unless_current('FE', { controller: "/home", action: "index" }, class: "nav-link"){ link_to('FE', { controller: "home", action: "index" }, class: "nav-link disabled") }
+      /= link_to_unless_current('FE', { controller: "/home", action: "index" }, class: "nav-link"){ link_to('FE', { controller: "home", action: "index" }, class: "nav-link disabled") }
     button.navbar-toggler[type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
       span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
-          = link_to_unless_current(t('news'), { controller: "/home", action: "index" }, class: "nav-link") { link_to(t('news'), { controller: "home", action: "index" }, class: "nav-link disabled") } 
+          = link_to_unless_current(t('news'), { controller: "/news", action: "index" }, class: "nav-link") { link_to(t('news'), { controller: "news", action: "index" }, class: "nav-link disabled") } 
       /   li.navbar-item
       /     = link_to_unless_current( t('top-menu.stats'), { controller: "/stats", action: "index" }, class: "nav-link"){ link_to( t('top-menu.stats'), { controller: "stats", action: "index" }, class: "nav-link disabled") }
       /   - if current_user && current_user.admin?

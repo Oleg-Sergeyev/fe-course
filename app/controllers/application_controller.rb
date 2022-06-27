@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(_user)
     flash.clear
-    root_path
+    user_path
   end
 
   def destroy_user_session

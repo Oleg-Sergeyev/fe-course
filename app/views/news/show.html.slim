@@ -1,6 +1,12 @@
-= form_for @user, url: profile_path do |f|
-  .field
-    = f.label :info
-    /= @user.info.to_plain_text
-    = @user.info
-/= render 'layouts/action_text/contents/content', info: @user.info
+
+.m-3
+  .row.gy-1.g-1
+    = form_for @news, url: user_news_show_path do |f|
+      .field
+        = @news.date
+        br
+        = @news.header
+        br
+        == @news.body
+        br
+        = @news.source

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   #devise_for :users
   devise_for :users, controllers: { registrations: :registrations }
-  root 'home#index'
+  root 'news#index'
 
   post :toggle, to: 'locales#toggle'
   #resource :profile, only: [:edit, :update, :show]
@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   resources :news
   get 'user/news/new', to: 'news#new'
   get 'user/news/edit/:id', to: 'news#edit', as: 'user_news_edit'
-  get 'user/news', to: 'news#index'
+  get 'user/news/:id', to: 'news#show', as: 'user_news_show'
+  get 'user/news', to: 'news#index', as: 'user_news_index'
   #get 'user/profile/edit', to: 'profiles#edit'
   # namespace :user do
   #   resources :news
