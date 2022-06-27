@@ -1,0 +1,11 @@
+.news-header{
+  cursor: pointer;
+}
+
+.news-body{
+  display: flex;
+  overflow: hidden;
+  height: 0px;
+  transition: height 0.3s;
+  /*visibility: hidden*/
+}

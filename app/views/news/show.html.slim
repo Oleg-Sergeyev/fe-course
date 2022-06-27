@@ -3,10 +3,10 @@
   .row.gy-1.g-1
     = form_for @news, url: user_news_show_path do |f|
       .field
-        = @news.date
+        span.news-header
+          = "#{@news.date}: #{@news.header}"
         br
-        = @news.header
-        br
-        == @news.body
-        br
-        = @news.source
+        span.news-body
+          == @news.body
+        / br
+        / = @news.source
