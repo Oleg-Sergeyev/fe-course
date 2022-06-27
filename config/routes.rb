@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resource :user, only: [:edit, :update, :show]
   resources :news
   get 'user/news/new', to: 'news#new'
-  get 'user/news/edit/:id', to: 'news#edit'
+  get 'user/news/edit/:id', to: 'news#edit', as: 'user_news_edit'
   get 'user/news', to: 'news#index'
   #get 'user/profile/edit', to: 'profiles#edit'
   # namespace :user do

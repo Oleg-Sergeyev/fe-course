@@ -387,3 +387,25 @@ trix-toolbar .trix-button-group button {
   .bx-user-circle:hover{
     cursor: pointer;
   }
+.block-new-news{
+    background-color: #ff04049e;
+    border: 1px dashed white;
+    border-radius: 0.5rem;
+}
+.new-news{
+  font-size: 2rem;
+  color: #fff;
+  padding: 0.5rem;
+}
+.news-tr-td {
+    a, a:link{
+    color: rgb(39, 45, 126);
+  }
+}
+.href-manage-news{
+    a, a:link{
+        color: #5c2efd;
+        border-bottom: 1px black dotted;
+        padding: 0.3rem;
+  }
+}

@@ -6,16 +6,14 @@
 //= require_tree .
 
 window.onload = function() {
-    const users_page = ['/user', '/user/edit', '/user/news']
-    const pages_auth = ['/users/sign_in', '/users/sign_out', 'edit']
-    let curr_page = window.location.pathname
-    //console.log(users_page.includes(curr_page))
-    if ( pages_auth.includes(curr_page) == true){
+    let curr_page = window.location.pathname.split("/")
+    //console.log(curr_page)
+    if ( curr_page.includes('sign_in') == true || curr_page.includes('sign_out') == true){
       //check_email_input()
       transition_height()
       // check_inputs_password()
     }
-    if ( users_page.includes(curr_page) == true){
+    if ( curr_page.includes('user') == true == true){
       //console.log(window.location.pathname.split("/"))
       transition_height()
       left_sidebar()

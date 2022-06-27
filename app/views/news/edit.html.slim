@@ -1,53 +1,54 @@
-= form_for @news, method: :patch do |f|
-  .field
-    .mb-4.mt-2.col-12[align="start"]
-      .row.gy-1.g-1
-        .col-sm-3.col-md-3.col-lg-2
-          span#basic-addon2.input-group-text
-            = t('label.header')
-        .col-sm-8.col-md-7.col-lg-4
-          .input-group.mb-3#div_input_email
-            = f.text_field :header, autofocus: true, autocomplete: "header", id:"input_header", class:"col-6 form-control", placeholder:"news!!! vasia_pupkin"
-      .row.gy-1.g-1
-        .col-sm-3.col-md-3.col-lg-2
-          span#basic-addon2.input-group-text
-            = t('label.source')
-        .col-sm-8.col-md-7.col-lg-4
-          .input-group.mb-3#div_input_email
-            = f.text_field :source, autofocus: true, autocomplete: "source", id:"input_source", class:"col-6 form-control", placeholder:"BBC News"      
-      .row.gy-1.g-1
-        .col-sm-3.col-md-3.col-lg-2
-          span#basic-addon2.input-group-text
-            = t('label.date')
-        .col-sm-8.col-md-7.col-lg-4
-          .input-group.mb-3#div_input_email
-            = f.date_field :date, autofocus: true, value: DateTime.current.to_date, id:"input_date", class:"col-6 form-control"
-            /= f.date_field :date, value: DateTime.current.to_date.strftime("%Y-%m-%d"), id:"input_date", class:"col-6 form-control"
-      .row.gy-1.g-1
-        .col-sm-3.col-md-3.col-lg-2
-          span#basic-addon2.input-group-text
-            = t('label.state')
-        .col-sm-8.col-md-7.col-lg-4
-          .input-group.mb-3#div_input_email
-            = f.text_field :state, autofocus: true, autocomplete: "created", id:"input_state", class:"col-6 form-control"    
-      .row.gy-1.g-1
-        .col-12
-          span#basic-addon2.input-group-text
-            = t('label.news_info')
-        .col-12
-          = f.rich_text_area :body, as: :trix_editor
-      .box.mt-3.mr-1.mb-2.ml-1
+.row.gy-1.g-1.m-3
+  = form_for @news, method: :patch do |f|
+    .field
+      .mb-4.mt-2.col-12[align="start"]
         .row.gy-1.g-1
-          .col.d-flex.justify-content-center
-            /= f.submit 'Save', class: "btn-save"
-            li.nav-link
-              /i.bx.bx-save.icon
-              = f.submit 'Save', class: "nav-link"
-                /span.text.nav-text Save
-        /.row.gy-1.g-1
-          .col-sm-5.col-md-4
+          .col-sm-3.col-md-3.col-lg-2
             span#basic-addon2.input-group-text
-              = t('label.current-password')
-          /.col-sm-7.col-md-8
-            .input-group.mb-3
-              = f.password_field :current_password, autocomplete: "confirmation", class:"col-6 form-control", placeholder:"password"  
+              = t('label.header')
+          .col-sm-8.col-md-7.col-lg-4
+            .input-group.mb-3#div_input_email
+              = f.text_field :header, autofocus: true, autocomplete: "header", id:"input_header", class:"col-6 form-control", placeholder:"news!!! vasia_pupkin"
+        .row.gy-1.g-1
+          .col-sm-3.col-md-3.col-lg-2
+            span#basic-addon2.input-group-text
+              = t('label.source')
+          .col-sm-8.col-md-7.col-lg-4
+            .input-group.mb-3#div_input_email
+              = f.text_field :source, autofocus: true, autocomplete: "source", id:"input_source", class:"col-6 form-control", placeholder:"BBC News"      
+        .row.gy-1.g-1
+          .col-sm-3.col-md-3.col-lg-2
+            span#basic-addon2.input-group-text
+              = t('label.date')
+          .col-sm-8.col-md-7.col-lg-4
+            .input-group.mb-3#div_input_email
+              = f.date_field :date, autofocus: true, value: DateTime.current.to_date, id:"input_date", class:"col-6 form-control"
+              /= f.date_field :date, value: DateTime.current.to_date.strftime("%Y-%m-%d"), id:"input_date", class:"col-6 form-control"
+        .row.gy-1.g-1
+          .col-sm-3.col-md-3.col-lg-2
+            span#basic-addon2.input-group-text
+              = t('label.state')
+          .col-sm-8.col-md-7.col-lg-4
+            .input-group.mb-3#div_input_email
+              = f.text_field :state, autofocus: true, autocomplete: "created", id:"input_state", class:"col-6 form-control"    
+        .row.gy-1.g-1
+          .col-12
+            span#basic-addon2.input-group-text
+              = t('label.news_info')
+          .col-12
+            = f.rich_text_area :body, as: :trix_editor
+        .box.mt-3.mr-1.mb-2.ml-1
+          .row.gy-1.g-1
+            .col.d-flex.justify-content-center
+              /= f.submit 'Save', class: "btn-save"
+              li.nav-link
+                /i.bx.bx-save.icon
+                = f.submit 'Save', class: "nav-link"
+                  /span.text.nav-text Save
+          /.row.gy-1.g-1
+            .col-sm-5.col-md-4
+              span#basic-addon2.input-group-text
+                = t('label.current-password')
+            /.col-sm-7.col-md-8
+              .input-group.mb-3
+                = f.password_field :current_password, autocomplete: "confirmation", class:"col-6 form-control", placeholder:"password"  
