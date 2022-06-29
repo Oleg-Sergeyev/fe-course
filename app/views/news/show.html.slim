@@ -1,12 +1,18 @@
 
 .m-3
   .row.gy-1.g-1
-    = form_for @news, url: user_news_show_path do |f|
-      .field
-        span.news-header
-          = "#{@news.date}: #{@news.header}"
-        br
-        span.news-body
-          == @news.body
-        / br
-        / = @news.source
+    .col-11
+      span.news-header
+        h2 = @news.header
+    .col-1.d-flex.justify-content-center.align-items-center
+      span.heart-news
+        i#heart-icon.bx.bx-heart
+  .row.gy-1.g-1
+    / .col
+    /   = @news.body.gallery_attachments()
+  .row.gy-1.g-1.mt-2
+    span.news-body
+      == @news.body
+  .row.gy-1.g-1.mt-1
+    span.news-date
+      = @news.date

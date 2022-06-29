@@ -18,6 +18,8 @@ module FeCourse
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.eager_load_paths << "#{Rails.root}/app/assets/images/news/**"
+
     config.active_storage.variant_processor = :mini_magick
     config.i18n.available_locales = %i[en ru]
     config.i18n.default_locale = :ru

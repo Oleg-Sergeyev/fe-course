@@ -30,8 +30,11 @@ window.onload = function() {
     }
     if ( curr_page.includes('news') == true){
       let news_header_div = document.querySelector('.news-header');
-      news_header_div.onclick = function(event){
-        transition_height_news_body()
+      if (news_header_div) {
+        rate_news()
+        news_header_div.onclick = function(event){
+          transition_height_news_body()
+        }
       }
     }
   };

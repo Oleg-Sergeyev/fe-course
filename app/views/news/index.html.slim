@@ -1,5 +1,5 @@
 .row.gy-1.g-1
-  .m-2
+  .col.m-2
     - if current_user
       = render 'news/manage_panel'
     table.table.table-striped.table
@@ -12,37 +12,23 @@
           th State
       tbody
         - @news.each_with_index do |item, i|
+          - @path = current_user ? user_news_edit_path(item.id) : news_path(item.id)
           tr
             td
               span.news-tr-td
-                - if current_user
-                  = link_to "#{i + 1}", user_news_edit_path(item.id)
-                - else  
-                  = link_to "#{i + 1}", news_path(item.id)
+                = link_to "#{i + 1}", @path
             td
               span.news-tr-td
-                - if current_user
-                  = link_to item.date, user_news_edit_path(item.id)
-                - else  
-                  = link_to item.date, news_path(item.id)
+                = link_to item.date, @path
             td
               span.news-tr-td
-                - if current_user
-                  = link_to item.source, user_news_edit_path(item.id)
-                - else  
-                  = link_to item.source, news_path(item.id)
+                = link_to item.source, @path
             td
               span.news-tr-td
-                - if current_user
-                  = link_to item.header, user_news_edit_path(item.id)
-                - else  
-                  = link_to item.header, news_path(item.id)
+                = link_to item.header, @path
             td 
               span.news-tr-td
-                - if current_user
-                  = link_to item.state, user_news_edit_path(item.id)
-                - else  
-                  = link_to item.state, news_path(item.id)
+                = link_to item.state, @path
             - if current_user
               td
                 span.href-manage-news
