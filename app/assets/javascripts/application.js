@@ -136,13 +136,24 @@ function clear_block(element){
 function transition_height_news_body(){
   let news_body_div = document.querySelector('.news-body');
   let compStyles = window.getComputedStyle(news_body_div);
-  console.log(compStyles.height)
-  if ( compStyles.height === "0px" ){
-    news_body_div.style.height = "450px";
-  } 
-  if ( compStyles.height != "0px" ) {
+  //console.log(compStyles.height)
+  if ( compStyles.height == "0px" ){
+    let height_div = getHeight(news_body_div);
+    console.log(height_div)
+    news_body_div.style.height = `${height_div}px`;
+  }else if ( compStyles.height != "0px" ) {
     news_body_div.style.height = "0px";
   }  
+}
+
+function getHeight(e) {
+  var outside = document.getElementById('outside');
+  var clone = e.cloneNode(true);
+  outside.appendChild(clone);
+  clone.style.height = 'fit-content';
+  var elHeight = outside.offsetHeight;
+  outside.removeChild(clone);
+  return elHeight;
 }
 
 function left_sidebar(){

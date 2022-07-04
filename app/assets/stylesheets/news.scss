@@ -12,8 +12,10 @@
   display: flex;
   overflow: hidden;
   height: 0px;
-  transition: height 0.3s;
-  /*visibility: hidden*/
+  transition: height 0.3 sease-in-out;
+  -webkit-transition: height 0.5s ease-in-out;
+  -moz-transition: height 0.5s ease-in-out;
+  -o-transition: height 0.5s ease-in-out;
 }
 .news-tr-td, .news-text-content{
    a, a:link, a:visited{
@@ -50,3 +52,8 @@
   text-align: justify;
  }
 
+ #outside {
+  position: absolute;
+  top: -1000;
+  left: -1000;
+}
