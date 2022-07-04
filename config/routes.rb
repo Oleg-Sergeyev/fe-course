@@ -10,10 +10,13 @@ Rails.application.routes.draw do
   patch 'user/edit', to: 'users#update'
   resource :user, only: [:edit, :update, :show]
   resources :news
+  post :simple_rating, to: 'news#simple_rating'
+
   get 'user/news/new', to: 'news#new'
   get 'user/news/edit/:id', to: 'news#edit', as: 'user_news_edit'
   get 'user/news/:id', to: 'news#show', as: 'user_news_show'
   get 'user/news', to: 'news#index', as: 'user_news_index'
+
   #get 'user/profile/edit', to: 'profiles#edit'
   # namespace :user do
   #   resources :news

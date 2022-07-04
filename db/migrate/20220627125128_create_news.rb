@@ -2,7 +2,7 @@
 
 class CreateNews < ActiveRecord::Migration[7.0]
   def change
-    create_table :news do |t|
+    create_table :news, comment: "Новости" do |t|
       t.with_options index: { unique: true } do
         string :header, comment: 'Новостной заголовок'
       end

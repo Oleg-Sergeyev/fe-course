@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_27_125128) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_02_163203) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_125128) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "news", force: :cascade do |t|
+  create_table "news", comment: "Новости", force: :cascade do |t|
     t.string "header", comment: "Новостной заголовок"
     t.string "body", comment: "Тело новости"
     t.string "source", comment: "Источник новости"
@@ -60,6 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_27_125128) do
     t.string "state", default: "created", comment: "статус новости"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "simple_rating", default: 0, comment: "Простой счетчик рейтинга новости"
     t.index ["header"], name: "index_news_on_header", unique: true
   end
 
