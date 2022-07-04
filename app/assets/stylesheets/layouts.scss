@@ -17,7 +17,7 @@ padding: 0;
 
 .content {
 	/*flex: 1 0 auto;*/
-  min-height: calc(100vh - 105px);
+  min-height: calc(100vh - 96px);
 }
 
 .footer {
@@ -70,7 +70,12 @@ color: rgb(255, 255, 255);
 
 .dropdown-menu.show {
   display: block;
-  background-color: #0d6efd;
+  background-color: #695cfe;
+  padding: 20px;
+  width: fit-content;
+  -webkit-box-shadow: -5px -5px 5px -5px rgba(62, 62, 62, 0.6) inset;
+  -moz-box-shadow: -5px -5px 5px -5px rgba(62, 62, 62, 0.6) inset;
+  box-shadow: -5px -5px 5px -5px rgba(62, 62, 62, 0.6) inset;
 }
 
 .fixed-bottom{
@@ -83,3 +88,11 @@ color: rgb(255, 255, 255);
   position: fixed;
 }
 }
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+  border-color: rgb(255, 255, 255);
+} 

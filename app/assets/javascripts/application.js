@@ -7,6 +7,7 @@
 //= require_tree .
 
 window.onload = function() {
+    window.addEventListener("resize", set_fit_content);
     let curr_page = window.location.pathname.split("/")
     //console.log(curr_page)
     if ( curr_page.includes('sign_in') == true || curr_page.includes('sign_out') == true){
@@ -31,9 +32,10 @@ window.onload = function() {
     if ( curr_page.includes('news') == true){
       let news_header_div = document.querySelector('.news-header');
       if (news_header_div) {
-        rate_news()
+        //set_fit_content(document.querySelector('.news-body'));
+        rate_news();
         news_header_div.onclick = function(event){
-          transition_height_news_body()
+          transition_height_news_body();
         }
       }
     }
@@ -131,29 +133,6 @@ function set_height_zero(element){
 }
 function clear_block(element){
   element.innerHTML = ""
-}
-
-function transition_height_news_body(){
-  let news_body_div = document.querySelector('.news-body');
-  let compStyles = window.getComputedStyle(news_body_div);
-  //console.log(compStyles.height)
-  if ( compStyles.height == "0px" ){
-    let height_div = getHeight(news_body_div);
-    console.log(height_div)
-    news_body_div.style.height = `${height_div}px`;
-  }else if ( compStyles.height != "0px" ) {
-    news_body_div.style.height = "0px";
-  }  
-}
-
-function getHeight(e) {
-  var outside = document.getElementById('outside');
-  var clone = e.cloneNode(true);
-  outside.appendChild(clone);
-  clone.style.height = 'fit-content';
-  var elHeight = outside.offsetHeight;
-  outside.removeChild(clone);
-  return elHeight;
 }
 
 function left_sidebar(){
