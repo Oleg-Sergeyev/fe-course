@@ -44,7 +44,8 @@ hash_news =
     body: document,
     date: DateTime.current.to_date,
     state: 'created',
-    source: 'Lenta.ru'
+    source: 'Lenta.ru',
+    simple_rating: 25
   }
 
 News.create! hash_news

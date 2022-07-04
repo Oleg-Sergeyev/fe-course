@@ -9,7 +9,7 @@
           th Date
           th Source 
           th Header
-          th State
+          th Rating
       tbody
         - @news.each_with_index do |item, i|
           - @path = current_user ? user_news_edit_path(item.id) : news_path(item.id)
@@ -28,7 +28,7 @@
                 = link_to item.header, @path
             td 
               span.news-tr-td
-                = link_to item.state, @path
+                = link_to item.simple_rating, @path
             - if current_user
               td
                 span.href-manage-news

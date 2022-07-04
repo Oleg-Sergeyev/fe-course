@@ -29,9 +29,12 @@
               = f.date_field :date, autofocus: true, value: DateTime.current.to_date, id:"input_date", class:"col-6 form-control"
               /= f.date_field :date, value: DateTime.current.to_date.strftime("%Y-%m-%d"), id:"input_date", class:"col-6 form-control"
         .row.gy-1.g-1
+          / .col-sm-3.col-md-3.col-lg-2
+          /   span#basic-addon2.input-group-text
+          /     = t('label.state')
           .col-sm-3.col-md-3.col-lg-2
-            span#basic-addon2.input-group-text
-              = t('label.state')
+            span.heart-news
+              h6 = f.simple_rating
           .col-sm-8.col-md-7.col-lg-4
             .input-group.mb-3#div_input_email
               = f.text_field :state, autofocus: true, autocomplete: "created", id:"input_state", class:"col-6 form-control"    

@@ -1,7 +1,7 @@
 
 .m-3
   .row.gy-1.g-1
-    .col-9
+    .col-11
       span.news-header
         h2 = @news.header
     .col-1.d-flex.justify-content-center.align-items-center
@@ -10,9 +10,6 @@
           i#heart-icon.bx.bx-heart.bxs-heart.heart-like
         - else
           i#heart-icon.bx.bx-heart
-    .col-1.d-flex.justify-content-center.align-items-center
-      span.heart-news
-        h6 = @news.simple_rating
   .row.gy-1.g-1
     / .col
     /   = @news.body.gallery_attachments()

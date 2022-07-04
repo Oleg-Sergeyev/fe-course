@@ -32,7 +32,7 @@ class NewsController < ApplicationController
     @news = News.find(params[:id])
     session[:news_id] = params[:id]
     session[:before] = News.find(session[:news_id]).simple_rating
-    #params[:rate] = false
+    session[:after] ||= 0
     cookies.permanent[:news_id] = params[:id]
     cookies.permanent[:rate] = session[:rate]
   end
@@ -69,14 +69,14 @@ class NewsController < ApplicationController
 
     currnet_rating = News.find(session[:news_id]).simple_rating
     session[:before] = currnet_rating
-    Rails.logger.info "*****************************************************************"
-    Rails.logger.info "********** session[:before] = #{session[:before]} ***************"
-    Rails.logger.info "********** session[:after] = #{session[:after]} *****************"
-    Rails.logger.info "*****************************************************************"
+    # Rails.logger.info "*****************************************************************"
+    # Rails.logger.info "********** session[:before] = #{session[:before]} ***************"
+    # Rails.logger.info "********** session[:after] = #{session[:after]} *****************"
+    # Rails.logger.info "*****************************************************************"
     if params[:rating].to_i == 1
       currnet_rating += 1
       session[:after] = session[:before] unless session[:after]
-      if (session[:before].to_i - session[:after].to_i).zero? || !session[:after].to_i
+      if (session[:before].to_i - session[:after].to_i).zero? || session[:after].zero?
         News.find(session[:news_id]).update!(simple_rating: currnet_rating)
         session[:action_plus] = true
         session[:after] = currnet_rating - 1
@@ -89,8 +89,6 @@ class NewsController < ApplicationController
         session[:after] = currnet_rating
       end
     end
-    Rails.logger.info "********** params[:news_id] = #{params[:news_id]} *****************"
-    redirect_to action: :show, id: params[:news_id]
   end
 
   private
