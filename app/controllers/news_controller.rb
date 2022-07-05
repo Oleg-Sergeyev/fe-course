@@ -32,9 +32,7 @@ class NewsController < ApplicationController
 
   def show
     @news = News.find(params[:id])
-    session[:news_id] = params[:id]
-    session[:before] = News.find(session[:news_id]).simple_rating
-    session[:after] ||= 0
+    session[:flag] ||= 0
   end
 
   def update
@@ -68,23 +66,16 @@ class NewsController < ApplicationController
     return unless [-1, 1].include?(params[:rating].to_i)
 
     currnet_rating = @news.simple_rating
-    session[:before] = currnet_rating
-    if params[:rating].to_i == 1
+
+    case session[:flag]
+    when 0
       currnet_rating += 1
-      session[:after] = session[:before] unless session[:after]
-      if (session[:before].to_i - session[:after].to_i).zero? || session[:after].zero?
-        @news.update!(simple_rating: currnet_rating)
-        session[:action_plus] = true
-        session[:after] = currnet_rating - 1
-      end
-    else
+      session[:flag] = 1
+    when 1
       currnet_rating -= 1
-      if session[:before].to_i - session[:after].to_i == 1
-        @news.update!(simple_rating: currnet_rating)
-        session[:action_plus] = false
-        session[:after] = currnet_rating
-      end
+      session[:flag] = 0
     end
+    @news.update!(simple_rating: currnet_rating)
   end
 
   private

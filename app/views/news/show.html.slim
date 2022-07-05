@@ -6,7 +6,7 @@
         h2 = @news.header
     .col-1.d-flex.justify-content-center.align-items-center
       span.heart-news
-        - if session[:action_plus] == true
+        - if session[:flag] == 1
           i#heart-icon.bx.bx-heart.bxs-heart.heart-like
         - else
           i#heart-icon.bx.bx-heart
