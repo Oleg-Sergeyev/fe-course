@@ -32,6 +32,7 @@ class NewsController < ApplicationController
 
   def show
     @news = News.find(params[:id])
+    session[:news_id] ||= params[:id]
     session[:flag] ||= 0
   end
 
@@ -65,6 +66,7 @@ class NewsController < ApplicationController
     return unless session[:news_id] == params[:news_id]
     return unless [-1, 1].include?(params[:rating].to_i)
 
+    Rails.logger.info "******** session[:flag]= #{session[:flag]} ***********"
     currnet_rating = @news.simple_rating
 
     case session[:flag]
@@ -75,7 +77,7 @@ class NewsController < ApplicationController
       currnet_rating -= 1
       session[:flag] = 0
     end
-    @news.update!(simple_rating: currnet_rating)
+    @news.update(simple_rating: currnet_rating)
   end
 
   private
