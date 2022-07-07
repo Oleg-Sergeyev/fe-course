@@ -33,3 +33,5 @@
               td
                 span.href-manage-news
                   = link_to t('label.destroy'), item, data: { confirm: 'Are you sure?' }, method: :delete 
+#add
+  = react_component("HelloWorld", { greeting: "Hello from react-rails." })

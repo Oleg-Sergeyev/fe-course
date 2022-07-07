@@ -21,7 +21,7 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'trix-rails', require: 'trix'
 gem 'turbo-rails'
-
+gem 'react-rails'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 gem 'slim-rails'
