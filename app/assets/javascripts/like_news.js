@@ -1,10 +1,7 @@
 function rate_news(){
    let heartIcon = document.getElementById ('heart-icon')
    if (heartIcon) {
-    //const rate = getCookie('rate')
-    //if (rate != 'false'){ 
-      heartIcon.addEventListener("click", handleClick);
-    //}
+     heartIcon.addEventListener("click", handleClick);
    }
 }
 
@@ -23,8 +20,7 @@ function changeHeartIconClass(heartIcon){
 const handleClick = async (event) => {
   const heartIcon = event.target;
   const rating = changeHeartIconClass(heartIcon);
-  const news_id = getCookie('news_id')
-  console.log(rating);
+  const news_id = get_id(window.location.href)
   try {
     const requestBody = new FormData();
     requestBody.append("rating", rating);
@@ -33,9 +29,8 @@ const handleClick = async (event) => {
     method: 'POST',
     body: requestBody
   });
-  //console.log(response);
   } catch (error) {
-  console.log(error)
+    console.log(error)
   }
 }
 
@@ -48,4 +43,8 @@ function getCookie(cName) {
     if (val.indexOf(name) === 0) res = val.substring(name.length);
   })
   return res
+}
+
+function get_id(str){
+  return str.split("/").slice(-1)[0]
 }
