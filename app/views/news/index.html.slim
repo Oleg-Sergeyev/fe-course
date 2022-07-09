@@ -1,37 +1,37 @@
-.row.gy-1.g-1
-  .col.m-2
-    - if current_user
-      = render 'news/manage_panel'
-    table.table.table-striped.table
-      thead
-        tr
-          th N
-          th Date
-          th Source 
-          th Header
-          th Rating
-      tbody
-        - @news.each_with_index do |item, i|
-          - @path = current_user ? user_news_edit_path(item.id) : news_path(item.id)
-          tr
-            td
-              span.news-tr-td
-                = link_to "#{i + 1}", @path
-            td
-              span.news-tr-td
-                = link_to item.date, @path
-            td
-              span.news-tr-td
-                = link_to item.source, @path
-            td
-              span.news-tr-td
-                = link_to item.header, @path
-            td 
-              span.news-tr-td
-                = link_to item.simple_rating, @path
-            - if current_user
-              td
-                span.href-manage-news
-                  = link_to t('label.destroy'), item, data: { confirm: 'Are you sure?' }, method: :delete 
-#add
-  = react_component("HelloWorld", { greeting: "Hello from react-rails." })
+/ .row.gy-1.g-1
+/   .col.m-2
+/     - if current_user
+/       = render 'news/manage_panel'
+/     table.table.table-striped.table
+/       thead
+/         tr
+/           th N
+/           th Date
+/           th Source 
+/           th Header
+/           th Rating
+/       tbody
+/         - @news.each_with_index do |item, i|
+/           - @path = current_user ? user_news_edit_path(item.id) : news_path(item.id)
+/           tr
+/             td
+/               span.news-tr-td
+/                 = link_to "#{i + 1}", @path
+/             td
+/               span.news-tr-td
+/                 = link_to item.date, @path
+/             td
+/               span.news-tr-td
+/                 = link_to item.source, @path
+/             td
+/               span.news-tr-td
+/                 = link_to item.header, @path
+/             td 
+/               span.news-tr-td
+/                 = link_to item.simple_rating, @path
+/             - if current_user
+/               td
+/                 span.href-manage-news
+/                   = link_to t('label.destroy'), item, data: { confirm: 'Are you sure?' }, method: :delete 
+  /= react_component("HelloWorld", { greeting: "Hello from react-rails." })
+#root

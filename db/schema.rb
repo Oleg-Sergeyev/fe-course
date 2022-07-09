@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_193155) do
     t.index ["news_id"], name: "index_comments_on_news_id"
   end
 
-  create_table "news", comment: "Новости", force: :cascade do |t|
+  create_table "news", force: :cascade do |t|
     t.string "header", comment: "Новостной заголовок"
     t.string "body", comment: "Тело новости"
     t.string "source", comment: "Источник новости"

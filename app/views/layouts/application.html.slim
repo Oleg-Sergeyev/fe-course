@@ -10,17 +10,19 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     /= javascript_pack_tag 'application','data-turbolinks-track': 'reload'
     = stylesheet_link_tag "https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    /= javascript_importmap_tags
+    /= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    /= javascript_importmap_tags("apllication", shim: !ENV["CI"])
+    = javascript_importmap_tags
   body
-    - if request.path.split('/').include?('user')
-      = render "layouts/left_menu"
-        /= yield
-    - else
-      .wrapper
-        .header
-        = render "layouts/top_menu"
-        .content
-          = yield
-        .footer
-          = render "layouts/bottom_menu"
+    #root
+    / - if request.path.split('/').include?('user')
+    /   = render "layouts/left_menu"
+    /     /= yield
+    / - else
+    /   .wrapper
+    /     .header
+    /       = render "layouts/top_menu"
+    /     .content
+    /       = yield
+    /     .footer
+    /       = render "layouts/bottom_menu"
