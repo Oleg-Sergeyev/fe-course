@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_06_193155) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_10_205150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,10 +55,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_193155) do
   create_table "comments", force: :cascade do |t|
     t.string "author"
     t.text "text"
-    t.bigint "news_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["news_id"], name: "index_comments_on_news_id"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
   end
 
   create_table "news", comment: "Новости", force: :cascade do |t|
@@ -70,7 +71,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_193155) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "simple_rating", default: 0, comment: "Простой счетчик рейтинга новости"
+    t.bigint "news_id", comment: "Внешний ключ для связи с таблицей news"
     t.index ["header"], name: "index_news_on_header", unique: true
+    t.index ["news_id"], name: "index_news_on_news_id"
   end
 
   create_table "users", comment: "Пользователи системы", force: :cascade do |t|
@@ -89,12 +92,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_193155) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "info", comment: "Информация о пользователе"
+    t.bigint "user_id", comment: "Внешний ключ для связи с таблицей users"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["user_id"], name: "index_users_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "news"
 end

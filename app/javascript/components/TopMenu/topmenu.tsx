@@ -19,10 +19,11 @@ const TopMenu = () => {
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Пользователь
+                Гость
               </a>
               <ul className="dropdown-menu dropdown-menu-end role" aria-labelledby="navbarDropdown">
-                <li><Link className="dropdown-item" to="/">Редактировать профиль</Link></li>
+                <li><Link className="dropdown-item" to="/">Вход</Link></li>
+                <li><Link className="dropdown-item" to="/">Регистрация</Link></li>
                 <li><Link className="dropdown-item" to="/">Локализация</Link></li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><Link className="dropdown-item" to="/">Выход</Link></li>

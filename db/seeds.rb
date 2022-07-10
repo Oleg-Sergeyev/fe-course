@@ -17,6 +17,15 @@ hash_users =
 
 User.create! hash_users
 
+hash_users2 =
+  {
+    name: 'user2@example.com',
+    email: 'user2@example.com',
+    password: 'user2@example.com'
+  }
+
+User.create! hash_users2
+
 blob = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/assets/images/news/jdep.jpg"),
                                               filename: 'jdep.jpg')
 attachment = ActionText::Attachment.from_attachable(blob)
@@ -60,7 +69,6 @@ document2 = "<div class='news-text-content'><h5 class='mb-3 mt-2'>Америка
             Во время судебного заседания по иску артиста к Эмбер Херд Депп сказал, что обвинения с ее стороны
             разрушили его карьеру. Из-за того, что актриса заявила о насилии со стороны экс-мужа, его лишили
             нескольких проектов, в том числе шестой части «Пиратов Карибского моря».
-            Повтор.
             <br><a href='https://lenta.ru/news/2022/06/27/johnny/'>Источник</a></div></div>"
 hash_news2 =
   {
@@ -73,3 +81,19 @@ hash_news2 =
   }
 
 News.create! hash_news2
+
+# author = 'Киноман'
+# text = 'Отличнная новость'
+# hash_comment1 =
+#   {
+#     author: author,
+#     text: text,
+#   }
+#   Comment.create! hash_comment1 
+
+# hash_comment2 =
+#   {
+#     author: 'Любитель',
+#     text: 'Так себе, надоел',
+#   }
+#   Comment.create! hash_comment2
