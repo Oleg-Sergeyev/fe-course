@@ -2,6 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import News from './News/news';
+import AllNews from './News/allnews';
 
 //const App = ({ arg }: AppProps) => {
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/news" element={<AllNews />} />
         <Route path="/news/:id" element={<News />} />
       </Routes>
     </BrowserRouter>

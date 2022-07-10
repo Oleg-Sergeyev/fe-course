@@ -31,7 +31,7 @@ const News = () => {
     <div className="container">
       <Card className='text-center'>
         <Card.Header>
-          <div> Title: {header} </div>
+          <div> {header} </div>
         </Card.Header>
         <Card.Body>
           {contentParser(body)}
