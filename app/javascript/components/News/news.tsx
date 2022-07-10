@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Card } from 'react-bootstrap';
 //import CommentBox from '../Comments/CommentBox'
 import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import contentParser from 'html-react-parser';
 
 const News = () => {
@@ -40,6 +41,10 @@ const News = () => {
           <CommentBox url='/api/v1/comments' post_id={id} />
         </Card.Footer> */}
       </Card>
+      <div className="d-flex justify-content-center bg-white back">
+        <Link className="link-secondary" to="/news">Назад</Link>
+      </div>
+      
     </div>
   );
 };

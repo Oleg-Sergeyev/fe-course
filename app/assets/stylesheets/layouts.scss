@@ -46,6 +46,15 @@ a, a:link, a:visited {
   pointer-events: none;
   cursor: default;
 }
+
+.back{
+  a, a:link {
+    color: #566af9;
+    text-decoration: none;
+    margin: 10px;
+    border-bottom: 1px #566af9 dotted;
+  }
+}
 a, a:link {
   color: rgb(255, 255, 255);
   text-decoration: none;

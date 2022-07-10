@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Table } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 const AllNews = () => {
   const [array, setArray] = React.useState([]);
@@ -23,7 +24,11 @@ const AllNews = () => {
   const renderTR = () => {
     let td: any[] = [];
     for (let i = array.length - 1; i >= 0; i -= 1) {
-      td.push(<tr key={i}><td>{array[i]["date"]}</td><td>{array[i]["header"]}</td></tr>);
+      td.push(<tr key={i}>
+                <td><span className='news-tr-td'><Link to={`/news/${array[i]["id"]}`}>{array[i]["date"]}</Link></span></td>
+                <td><span className='news-tr-td'><Link to={`/news/${array[i]["id"]}`}>{array[i]["header"]}</Link></span></td>
+                <td><span className='news-tr-td'><Link to={`/news/${array[i]["id"]}`}>{array[i]["simple_rating"]}</Link></span></td>
+              </tr>);
     }
     return td;
   };
