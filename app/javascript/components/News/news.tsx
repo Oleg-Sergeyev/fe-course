@@ -38,7 +38,7 @@ const News = () => {
           {contentParser(body)}
         </Card.Body>
         <Card.Footer className='text-muted'>
-          {/* <CommentBox url='/api/v1/comments' news_id={id} /> */}
+          <CommentBox url='/api/v1/comments' news_id={id} />
         </Card.Footer>
       </Card>
       <div className="d-flex justify-content-center bg-white back">
