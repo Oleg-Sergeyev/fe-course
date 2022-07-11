@@ -1,6 +1,5 @@
-import { htmlToDOM } from 'html-react-parser';
 import React from 'react'
-import Comment from './comment'
+import Comment from './Comment'
 
 class Comments extends React.Component {
   constructor(props) {
@@ -8,12 +7,14 @@ class Comments extends React.Component {
   }
 
   render() {
-    let commentNodes = this.state.comments.map((comment, index) => {
-      return (<Comment key={index} author={comment.author}>
-      {comment.text}
+    let commentNodes = this.props.comments.map((comment, index) => {
+      return (<Comment key={index} author={comment.author} commentId={comment.id} subComments={comment.comments}>
+        {comment.text}
       </Comment>);
     });
+
     return (<div className="commentList">{commentNodes}</div>);
   }
 }
+
 export default Comments;

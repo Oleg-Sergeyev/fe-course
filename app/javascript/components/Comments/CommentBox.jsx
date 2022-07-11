@@ -1,5 +1,5 @@
 import React from 'react'
-import Comments from './comments'
+import Comments from './Comments'
 import CommentForm from './CommentForm'
 const token = document.querySelector('meta[name="csrf-token"]').content;
 
@@ -37,7 +37,7 @@ class CommentBox extends React.Component {
       },
       body: JSON.stringify({
         ...newComment,
-        post_id: this.props.post_id
+        news_id: this.props.news_id
       })
     })
       .then(response => response.json())
