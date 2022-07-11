@@ -4,7 +4,9 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import TopMenu from './TopMenu/topmenu';
 import News from './News/news';
 import AllNews from './News/allnews';
+import { ReactSession } from 'react-client-session';
 
+ReactSession.setStoreType("localStorage");
 //const App = ({ arg }: AppProps) => {
 const App = () => {
   // return <div>{`Hello!`}</div>;

@@ -44,7 +44,6 @@ const News = () => {
       <div className="d-flex justify-content-center bg-white back">
         <Link className="link-secondary" to="/news">Назад</Link>
       </div>
-      
     </div>
   );
 };

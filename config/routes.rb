@@ -28,6 +28,19 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  #devise_for :user, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+
+  get "login", to: "devise/sessions#new"
+
+  namespace :api, defaults: {format: 'json'} do 
+    namespace :v1 do 
+      devise_scope :api_v1_user do
+        
+      end
+    end
+  end
+
   resources :news
 
   namespace :api do
