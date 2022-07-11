@@ -57,7 +57,6 @@ class Comment extends React.Component {
           <Card.Text>
             {this.props.children}
           </Card.Text>
-
           <SubCommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
           <br />
           <div className="commentList">{commentNodes}</div>

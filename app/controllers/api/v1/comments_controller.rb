@@ -27,7 +27,7 @@ module Api
         @commentable ||= if params[:comment_id]
            Comment.find_by_id(params[:comment_id]) 
         elsif params[:news_id]
-          @commentable = Post.find_by_id(params[:news_id])
+          @commentable = News.find_by_id(params[:news_id])
         end
       end
     end
