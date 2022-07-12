@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #devise_for :users
+  devise_for :users
   # devise_for :users, controllers: { registrations: :registrations }
   root 'news#index'
 
@@ -31,12 +31,15 @@ Rails.application.routes.draw do
 
   #devise_for :user, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
 
-  get "login", to: "devise/sessions#new"
 
-  namespace :api, defaults: {format: 'json'} do 
-    namespace :v1 do 
-      devise_scope :api_v1_user do
-        
+  # devise_scope :user do
+  #   get "/login" => "devise/sessions#new"
+  # end
+
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      devise_scope :user do
+        post :sign_in, to: 'sessions#create_session'
       end
     end
   end

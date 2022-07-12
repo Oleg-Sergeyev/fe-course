@@ -22,7 +22,7 @@ const TopMenu = () => {
                 Гость
               </a>
               <ul className="dropdown-menu dropdown-menu-end role" aria-labelledby="navbarDropdown">
-                <li><Link className="dropdown-item" to="/">Вход</Link></li>
+                <li><Link className="dropdown-item" to="/users/sign_in">Вход</Link></li>
                 <li><Link className="dropdown-item" to="/">Регистрация</Link></li>
                 <li><Link className="dropdown-item" to="/">Локализация</Link></li>
                 <li><hr className="dropdown-divider" /></li>

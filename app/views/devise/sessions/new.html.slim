@@ -1,49 +1,49 @@
-.form-group[align="center"]
-  .container-registration
-    .row.justify-content-center
-      .layer-1.mb-4.mt-4.col-8[align="center"]
-        .row
-          .col.mb-3.mt-3
-            h2 = t("label.log_in")
-          - if !flash.empty?
-            .mgs-box.mb-4
-              .alert.alert-info
-                - flash.each do |_type, msg|
-                  = msg
-        .row    
-          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-            .row.gy-1.g-1
-              .col-sm-5.col-md-4
-                span#basic-addon2.input-group-text
-                  = t('label.email')
-              .col-sm-7.col-md-8
-                .input-group.mb-3#div_input_email
-                  = f.email_field :email, autofocus: true, autocomplete: "email", id:"input_email", class:"col-6 form-control", placeholder:"user@example.com"
-            #box-email-warning.row.row.gy-1.g-1
-              .col-sm-5.col-md-4
-              .col-sm-7.col-md-8
-                span#label_wrong_email.input-group-text.mb-3
-                  = " "  
-            .row.gy-1.g-1
-              .col-sm-5.col-md-4
-                span#basic-addon2.input-group-text
-                  = t('label.password')
-              .col-sm-7.col-md-8
-                .input-group.mb-3
-                  = f.password_field :password, autocomplete: "current-password", class:"col-6 form-control", placeholder:"password"
-            .row.gy-1.g-1
-              - if devise_mapping.rememberable?
-                .col-sm-7.col-md-7
-                  .input-group.align-middle.d-inline-block
-                    = f.check_box :remember_me, class:"form-check-input", value:"", type:"checkbox"
-                    label.form-check-label.ms-1[for="remember_me"]
-                      = t("label.remember_me")
-              .col-sm-5.col-md-5.d-flex.justify-content-end
-                button#submit_devise.submit.btn.btn-secondary[type="submit"]
-                  = t("label.confirm")
-        .row.gy-1.g-1
-          .mt-3.col
-            = render "devise/shared/links"
-        .row.gy-1.g-1    
-          .mb-3.d-flex.justify-content-end
-            = link_to "#{language_link_name}", toggle_path, class: "btn-localization btn btn-secondary", method: :post
+/ .form-group[align="center"]
+/   .container-registration
+/     .row.justify-content-center
+/       .layer-1.mb-4.mt-4.col-8[align="center"]
+/         .row
+/           .col.mb-3.mt-3
+/             h2 = t("label.log_in")
+/           - if !flash.empty?
+/             .mgs-box.mb-4
+/               .alert.alert-info
+/                 - flash.each do |_type, msg|
+/                   = msg
+/         .row    
+/           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+/             .row.gy-1.g-1
+/               .col-sm-5.col-md-4
+/                 span#basic-addon2.input-group-text
+/                   = t('label.email')
+/               .col-sm-7.col-md-8
+/                 .input-group.mb-3#div_input_email
+/                   = f.email_field :email, autofocus: true, autocomplete: "email", id:"input_email", class:"col-6 form-control", placeholder:"user@example.com"
+/             #box-email-warning.row.row.gy-1.g-1
+/               .col-sm-5.col-md-4
+/               .col-sm-7.col-md-8
+/                 span#label_wrong_email.input-group-text.mb-3
+/                   = " "  
+/             .row.gy-1.g-1
+/               .col-sm-5.col-md-4
+/                 span#basic-addon2.input-group-text
+/                   = t('label.password')
+/               .col-sm-7.col-md-8
+/                 .input-group.mb-3
+/                   = f.password_field :password, autocomplete: "current-password", class:"col-6 form-control", placeholder:"password"
+/             .row.gy-1.g-1
+/               - if devise_mapping.rememberable?
+/                 .col-sm-7.col-md-7
+/                   .input-group.align-middle.d-inline-block
+/                     = f.check_box :remember_me, class:"form-check-input", value:"", type:"checkbox"
+/                     label.form-check-label.ms-1[for="remember_me"]
+/                       = t("label.remember_me")
+/               .col-sm-5.col-md-5.d-flex.justify-content-end
+/                 button#submit_devise.submit.btn.btn-secondary[type="submit"]
+/                   = t("label.confirm")
+/         .row.gy-1.g-1
+/           .mt-3.col
+/             = render "devise/shared/links"
+/         .row.gy-1.g-1    
+/           .mb-3.d-flex.justify-content-end
+/             = link_to "#{language_link_name}", toggle_path, class: "btn-localization btn btn-secondary", method: :post
