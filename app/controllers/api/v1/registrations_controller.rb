@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class RegistrationsController < Devise::RegistrationsController
@@ -10,17 +12,17 @@ module Api
 
       def create
         user = User.create(username: params[:username],
-                            email: params[:email],
-                            password: params[:password],
-                            password_confirmation: params[:password_confirmation])
+                           email: params[:email],
+                           password: params[:password],
+                           password_confirmation: params[:password_confirmation])
 
         if user.save
-          render json: { status: "SUCCESS", message: "Created new user account", data: user }, status: :ok
+          render json: { status: 'SUCCESS', message: 'Created new user account', data: user }, status: :ok
         else
-          render json: { status: "ERROR",
-                          message: "Could not create new user account",
-                          data: user.errors },
-                          status: :unprocessable_entity
+          render json: { status: 'ERROR',
+                         message: 'Could not create new user account',
+                         data: user.errors },
+                 status: :unprocessable_entity
 
         end
       end

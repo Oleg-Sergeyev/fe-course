@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class CommentsController < ApplicationController
@@ -25,10 +27,10 @@ module Api
 
       def commentable
         @commentable ||= if params[:comment_id]
-           Comment.find_by_id(params[:comment_id]) 
-        elsif params[:news_id]
-          @commentable = News.find_by_id(params[:news_id])
-        end
+                           Comment.find_by_id(params[:comment_id])
+                         elsif params[:news_id]
+                           @commentable = News.find_by_id(params[:news_id])
+                         end
       end
     end
   end

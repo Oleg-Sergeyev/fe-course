@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { Card } from 'react-bootstrap';
-import NewAuthForm from './NewAuthForm'
-import { useParams } from 'react-router-dom';
 
- const NewAuth = () => {
+const AuthError = (props) => {
 //   const { id } = useParams();
-//   const [header, setHeader] = React.useState('None');
+//  const [text, setText] = React.useState('');
+// setText(props.text);
 //   const [body, setBody] = React.useState('Empty');
 //   const [source, setSource] = React.useState('Empty');
 //     React.useEffect(() => {
@@ -28,15 +26,8 @@ import { useParams } from 'react-router-dom';
 
 return (
     <div className="container">
-      <div className="commentBox panel panel-default">
-        <div className="panel-body">
-          <h1>Авторизация</h1>
-          <br />
-          <NewAuthForm ></NewAuthForm>
-          {/* <NewAuthForm onCommentSubmit={this.handleCommentSubmit.bind(this)} /> */}
-        </div>
-      </div>
+      { props.text }
     </div>
   );
 };
-export default NewAuth;
+export default AuthError;
