@@ -2,12 +2,25 @@ import * as React from 'react';
 import { Nav } from 'react-bootstrap';
 import 'bootstrap/dist/js/bootstrap.bundle'
 import { Link } from "react-router-dom";
-//import CommentBox from '../Comments/CommentBox'
-import { useParams } from 'react-router-dom';
-import contentParser from 'html-react-parser';
+import AuthLoggedSubMenu from '../Auth/AuthLoggedSubMenu';
+import { ReactSession } from 'react-client-session';
+//ReactSession.setStoreType("localStorage");
 
-const TopMenu = () => {
+const TopMenu = (props) => {
+  
+  //props.username ? setUserName(username) :  setUserName('Гость')
+  // console.log('username', username);
+  // React.useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("username");
+  //   if (loggedInUser) {
+  //     // const foundUser = JSON.parse(loggedInUser);
+  //     // setUser(foundUser);
+  //     console.log('username', loggedInUser);
+  //   }
+  // }, []);
 
+  // const currrent_user = localStorage.sessionStorage.getItem("username");
+  // console.log('user', currrent_user);
   return (
     <Nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -17,18 +30,14 @@ const TopMenu = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Гость
-              </a>
-              <ul className="dropdown-menu dropdown-menu-end role" aria-labelledby="navbarDropdown">
+            <AuthLoggedSubMenu name = { props.username } />
+              {/* <ul className="dropdown-menu dropdown-menu-end role" aria-labelledby="navbarDropdown">
                 <li><Link className="dropdown-item" to="/users/sign_in">Вход</Link></li>
                 <li><Link className="dropdown-item" to="/">Регистрация</Link></li>
                 <li><Link className="dropdown-item" to="/">Локализация</Link></li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><Link className="dropdown-item" to="/">Выход</Link></li>
-              </ul>
-            </li>
+              </ul> */}
             {/* <li className="nav-item">
               <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
             </li> */}

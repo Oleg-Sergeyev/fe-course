@@ -36,10 +36,11 @@ Rails.application.routes.draw do
   #   get "/login" => "devise/sessions#new"
   # end
 
-  namespace :api, defaults: { format: 'json' } do
+  namespace :api do#, defaults: { format: 'json' } do
     namespace :v1 do
       devise_scope :user do
         post :sign_in, to: 'sessions#create_session'
+        delete :sign_out, to: 'sessions#destroy'
       end
     end
   end

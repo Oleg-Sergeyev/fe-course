@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from 'react-bootstrap'
-import MessageError from './AuthErorr';
+import AuthMessage from './AuthMessage';
 import { useNavigate } from 'react-router-dom';
 
 const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -9,6 +9,7 @@ const token = document.querySelector('meta[name="csrf-token"]').content;
 const NewAuthForm = () => {
   const navigate = useNavigate();
   const [text_erorr, setText] = React.useState('');
+  
   function handleSubmit(e) {
     e.preventDefault();
     let email = e.target[0].value;
@@ -17,7 +18,7 @@ const NewAuthForm = () => {
       alert("Please input email/password");
       return;
     }
-    const user = {  
+    const data = {  
       "user": {
           "username": email,
           "email": email,
@@ -25,17 +26,17 @@ const NewAuthForm = () => {
           "password_confirmation": password
         }
       }
-    handleAuthSubmit(user);
+    handleAuthSubmit(data);
   };
 
-  function handleAuthSubmit(user) {
+  function handleAuthSubmit(data) {
     fetch('/api/v1/sign_in', {
       method: 'POST',
       headers: {
         'X-CSRF-Token': token,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(data)
     })
       // .then(response => { if (!response.ok) { throw new Error(`HTTP error ${response.status}`); }
       //     navigate('/')
@@ -47,6 +48,9 @@ const NewAuthForm = () => {
           setText(response.error)
         }
         else {
+          localStorage.setItem("username", data.user.username);
+          // const loggedInUser = localStorage.getItem("username");
+          // console.log('username', loggedInUser);
           navigate('/');
         }
       })
@@ -61,7 +65,7 @@ const NewAuthForm = () => {
 
   return(
     <div>
-      <MessageError text={text_erorr} />
+      <AuthMessage text={text_erorr} />
       <form className="form" onSubmit={event => handleSubmit(event)}>
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email address</label>

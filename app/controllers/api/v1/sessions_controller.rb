@@ -23,6 +23,10 @@ module Api
         root_path
       end
 
+      def destroy
+        session[:user] = nil
+        render json: { 'overiden': 'yes' }
+      end
       # def user_params
       #   params.require(:user).permit(:username, :email, :password, :password_confirmation)
       # end

@@ -4,14 +4,12 @@ import NewAuthForm from './Auth/NewAuthForm'
 import News from './News/news';
 import AllNews from './News/allnews';
 import TopMenu from './TopMenu/topmenu';
-import { ReactSession } from 'react-client-session';
 
-ReactSession.setStoreType("localStorage");
-
-const App = () => {
+const App = (props) => {
+  
   return (
     <BrowserRouter>
-      <TopMenu />
+      <TopMenu username={props.username}/>
         <Routes>
           <Route path="/" element={<AllNews />} />
           <Route path="/news" element={<AllNews />} />
