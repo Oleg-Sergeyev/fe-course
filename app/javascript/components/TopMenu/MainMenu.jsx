@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Nav } from 'react-bootstrap';
 import 'bootstrap/dist/js/bootstrap.bundle'
 import { Link } from "react-router-dom";
-import AuthLoggedSubMenu from '../Auth/AuthLoggedSubMenu';
+import AuthLoggedSubMenu from './UserSubMenu';
 import { ReactSession } from 'react-client-session';
 //ReactSession.setStoreType("localStorage");
 
