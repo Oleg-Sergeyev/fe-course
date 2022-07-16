@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Button } from 'react-bootstrap'
 import AuthMessage from './AuthMessage';
-import UserSubMenu from '../TopMenu/UserSubMenu'
 import { log_in } from './authmethods'
 import { useNavigate } from 'react-router-dom';
 
@@ -28,47 +27,12 @@ const NewAuthForm = () => {
           "password_confirmation": password
         }
       }
-    const message = log_in(data)
-    console.log('message from log ', message);
+    log_in(data)
+    localStorage.setItem("username", data.user.username);
     navigate('/');
-    //return (< UserSubMenu name={ 'USER' } />) 
   };
 
-  function handleAuthSubmit(data) {
-    // fetch('/api/v1/sign_in', {
-    //   method: 'POST',
-    //   headers: {
-    //     'X-CSRF-Token': token,
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(data)
-    // })
-    //   // .then(response => { if (!response.ok) { throw new Error(`HTTP error ${response.status}`); }
-    //   //     navigate('/')
-    //   // }) // Note: No `catch` h
-    //   .then(response => response.json())
-    //   .then(response => { 
-    //     if (response.error) {
-    //       //throw new Error(`HTTP error ${response.status}`);
-    //       setText(response.error)
-    //     }
-    //     else {
-    //       localStorage.setItem("username", data.user.username);
-    //       //CurrentUser.setUser(data.user.username);
-    //       // const loggedInUser = localStorage.getItem("username");
-    //       // console.log('username', loggedInUser);
-    //       navigate('/');
-    //     }
-    //   })
-    //   // .then((data) => {
-    //   // console.log(`data ${data}`);
-    //   // //navigate('/');
-    //   // })
-    //   .catch((error) => {
-    //     console.error('Error:', error);
-    //   });
-  }
-  if (localStorage.getItem('username') == 'guest' || ocalStorage.getItem('username') == null)
+  if (localStorage.getItem('username') == 'guest' || localStorage.getItem('username') === undefined)
   {
     return(
       <div>
@@ -76,12 +40,12 @@ const NewAuthForm = () => {
         <form className="form" onSubmit={event => handleSubmit(event)}>
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address</label>
-            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
+            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" autoComplete="current-email"></input>
             <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div className="form-group">
             <label htmlFor="exampleInputPassword1">Password</label>
-            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"></input>
+            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" autoComplete="current-password"></input>
           </div>
           <div className="form-group form-check">
             <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>

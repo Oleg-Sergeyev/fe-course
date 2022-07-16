@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
-import { ReactSession } from 'react-client-session';
+//import { ReactSession } from 'react-client-session';
 
 class CommentForm extends React.Component {
   constructor(props) {

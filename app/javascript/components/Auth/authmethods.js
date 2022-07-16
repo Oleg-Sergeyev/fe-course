@@ -30,8 +30,6 @@ export const log_in = (data) => {
         console.log('LOG ERROR')
       }
       else {
-        localStorage.setItem("username", data.user.username);
-        console.log('LOG IN');
         message = "login succses";
         console.log(message);
       }
