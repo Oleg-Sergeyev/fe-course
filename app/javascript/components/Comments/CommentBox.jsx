@@ -1,7 +1,7 @@
 import React from 'react'
 import Comments from './Comments'
 import CommentForm from './CommentForm'
-const token = document.querySelector('meta[name="csrf-token"]').content;
+const token = localStorage.getItem("token");
 
 class CommentBox extends React.Component {
   constructor(props) {

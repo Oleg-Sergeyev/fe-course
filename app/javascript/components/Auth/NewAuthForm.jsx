@@ -4,9 +4,6 @@ import AuthMessage from './AuthMessage';
 import { log_in } from './authmethods'
 import { useNavigate } from 'react-router-dom';
 
-const token = document.querySelector('meta[name="csrf-token"]').content;
-
-
 const NewAuthForm = () => {
   const navigate = useNavigate();
   const [text_erorr, setText] = React.useState('');

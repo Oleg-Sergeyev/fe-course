@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import SubCommentForm from './CommentForm'
-const token = document.querySelector('meta[name="csrf-token"]').content;
+const token = localStorage.getItem("token");
 
 class Comment extends React.Component {
   constructor(props) {

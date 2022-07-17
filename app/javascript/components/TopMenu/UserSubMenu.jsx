@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import {log_out} from '../Auth/authmethods';
-const token = document.querySelector('meta[name="csrf-token"]').content;
+//const token = document.querySelector('meta[name="csrf-token"]').content;
 
 const AuthLoggedSubMenu = () => {
   const [name, setName] = React.useState(localStorage.getItem("username"));
@@ -11,7 +11,7 @@ const AuthLoggedSubMenu = () => {
   
   function handleAuthLogout() {
     setName(log_out)
-    navigate('/');
+    navigate('/news');
   }
 
   if (localStorage.getItem("username") == 'guest' || localStorage.getItem("username") === undefined){

@@ -4,6 +4,7 @@ import NewAuthForm from './Auth/NewAuthForm'
 import News from './News/news';
 import AllNews from './News/allnews';
 import TopMenu from './TopMenu/MainMenu';
+localStorage.setItem("token", document.querySelector('meta[name="csrf-token"]').content);
 
 const App = () => {
   return (
