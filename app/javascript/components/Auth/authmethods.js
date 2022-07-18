@@ -8,6 +8,7 @@ export const get_current_user = () => {
             console.log('result.name ', result.name)
             localStorage.clear;
             localStorage.setItem("username", result.name);
+            localStorage.setItem("like", result.simple_rating);
             // this.setState({
             //   isLoaded: true,
             //   items: result.items

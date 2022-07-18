@@ -4,6 +4,7 @@ class NewsController < ApplicationController
   before_action :set_news, only: %i[show edit update destroy simple_rating]
   before_action :authenticate_user!, only: %i[new edit update]
   skip_before_action :verify_authenticity_token, only: [:simple_rating]
+  respond_to :json
 
   def index
     @news = News.all
@@ -24,6 +25,10 @@ class NewsController < ApplicationController
         format.json { render json: @news.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def heart
+    session[:flag]
   end
 
   def edit
@@ -63,10 +68,16 @@ class NewsController < ApplicationController
   end
 
   def simple_rating
-    return unless session[:news_id] == params[:news_id]
+    # Rails.logger.info "******** session[:flag]= #{session[:flag]} ***********"
+    # Rails.logger.info "******** session[:news_id]= #{session[:news_id]} ***********"
+    # Rails.logger.info "******** params[:news_id]= #{params[:news_id]} ***********"
+    # Rails.logger.info "******** params[:rating].to_i= #{params[:rating].to_i} ***********"
+    return unless session[:news_id].to_i == params[:news_id].to_i
     return unless [-1, 1].include?(params[:rating].to_i)
 
-    Rails.logger.info "******** session[:flag]= #{session[:flag]} ***********"
+    # Rails.logger.info "+++++++ ????? = #{[-1, 1].include?(params[:rating].to_i)} +++++++"
+
+    # Rails.logger.info "******** session[:flag]= #{session[:flag]} ***********"
     currnet_rating = @news.simple_rating
 
     case session[:flag]
@@ -78,6 +89,8 @@ class NewsController < ApplicationController
       session[:flag] = 0
     end
     @news.update(simple_rating: currnet_rating)
+    render json: { simple_rating: currnet_rating, heart: session[:flag]}
+  #  binding.pry
   end
 
   private

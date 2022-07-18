@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import Likes from "../Comments/Likes";
 
 const AllNews = () => {
   const [array, setArray] = React.useState([]);
@@ -27,7 +28,7 @@ const AllNews = () => {
       td.push(<tr key={i}>
                 <td><span className='news-tr-td'><Link to={`/news/${array[i]["id"]}`}>{array[i]["date"]}</Link></span></td>
                 <td><span className='news-tr-td'><Link to={`/news/${array[i]["id"]}`}>{array[i]["header"]}</Link></span></td>
-                <td><span className='news-tr-td'><Link to={`/news/${array[i]["id"]}`}>{array[i]["simple_rating"]}</Link></span></td>
+                <td><span className='news-tr-td'><Likes likes={array[i]["simple_rating"]} news_id={array[i]["id"]} heart={array[i]["heart"]}/></span></td>
               </tr>);
     }
     return td;

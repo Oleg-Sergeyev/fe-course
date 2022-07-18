@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # patch 'user/edit', to: 'users#update'
   # resource :user, only: [:edit, :update, :show]
   # resources :news
-  # post :simple_rating, to: 'news#simple_rating'
+  post :simple_rating, to: 'news#simple_rating'
 
   # get 'user/news/new', to: 'news#new'
   # get 'user/news/edit/:id', to: 'news#edit', as: 'user_news_edit'
