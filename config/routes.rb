@@ -49,9 +49,10 @@ Rails.application.routes.draw do
 
   resources :news
 
-  namespace :api do
+  namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
       resources :comments, only: [:index, :show, :create, :destroy]
+      get 'comments/:news_id/show', to: 'comments#show'
     end
   end
 end

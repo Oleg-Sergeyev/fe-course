@@ -9,6 +9,11 @@ module Api
         @comments = Comment.includes(:comments).news_comments.where(commentable_id: params[:news_id])
       end
 
+      def show
+        @comments = Comment.includes(:comments).news_comments.where(commentable_id: params[:news_id])
+        render json: @comments
+      end
+
       def create
         comment = commentable.comments.new(comment_params)
         comment.author = current_user.email

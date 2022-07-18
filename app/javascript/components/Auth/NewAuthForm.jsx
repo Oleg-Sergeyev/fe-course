@@ -24,8 +24,10 @@ const NewAuthForm = () => {
           "password_confirmation": password
         }
       }
-    log_in(data)
+    log_in(data);
+    localStorage.clear;
     localStorage.setItem("username", data.user.username);
+    localStorage.setItem("token", document.querySelector('meta[name="csrf-token"]').content);
     navigate('/');
   };
 

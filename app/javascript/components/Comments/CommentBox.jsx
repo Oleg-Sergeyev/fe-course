@@ -11,7 +11,8 @@ class CommentBox extends React.Component {
 
 
   componentDidMount() {
-    fetch(`${this.props.url}?news_id=${this.props.news_id}`, {
+    //fetch(`${this.props.url}?news_id=${this.props.news_id}`, {
+    fetch(`${this.props.url}/${this.props.news_id}/show`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

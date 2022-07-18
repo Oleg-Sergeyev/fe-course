@@ -6,6 +6,7 @@ export const get_current_user = () => {
           (result) => {
             username = result.name
             console.log('result.name ', result.name)
+            localStorage.clear;
             localStorage.setItem("username", result.name);
             // this.setState({
             //   isLoaded: true,
@@ -41,6 +42,7 @@ fetch("/api/v1/sign_out")
           // });
         }
       )
+  localStorage.clear;
   localStorage.setItem("username", "guest");
   return "guest";
 }
