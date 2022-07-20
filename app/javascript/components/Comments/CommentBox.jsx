@@ -6,7 +6,9 @@ const token = localStorage.getItem("token");
 class CommentBox extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { comments: [] };
+    this.state = { 
+      message: '',
+      comments: [] };
   }
 
 

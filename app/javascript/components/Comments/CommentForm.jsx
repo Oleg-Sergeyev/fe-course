@@ -14,6 +14,10 @@ class CommentForm extends React.Component {
       alert("Please enter your comment");
       return;
     }
+    if(localStorage.getItem("username") == 'guest') {
+      alert("Требуется регистрация");
+      return;
+    }
     this.props.onCommentSubmit({text:text});
   }
 

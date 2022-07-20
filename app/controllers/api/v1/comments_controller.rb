@@ -3,7 +3,7 @@
 module Api
   module V1
     class CommentsController < ApplicationController
-      before_action :authenticate_user!
+      before_action :authenticate_user!, only: %i[create destroy]
       skip_before_action :verify_authenticity_token
       def index
         @comments = Comment.includes(:comments).news_comments.where(commentable_id: params[:news_id])

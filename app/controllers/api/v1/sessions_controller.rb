@@ -33,7 +33,6 @@ module Api
         # super
         #binding.pry
         render json: { 'session': 'logout' }
-        
       end
 
       def current_user_api
