@@ -5,10 +5,5 @@ class Comment < ApplicationRecord
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
 
-  #scope :news_comments, -> { self.all }
-  #scope :news_comments, -> { where(commentable_type: 'News').or where(commentable_type: 'Comment') }
-  #scope :news_comments, -> { where(commentable_type: "News")}.or{where(commentable_type: "Comment") }
-  
-  scope :comment_comments, -> { where(commentable_type: 'Comment') }
   scope :news_comments, -> { where(commentable_type: 'News') }
 end

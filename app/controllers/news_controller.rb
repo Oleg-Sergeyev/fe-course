@@ -2,7 +2,7 @@
 
 class NewsController < ApplicationController
   before_action :set_news, only: %i[show edit update destroy simple_rating]
-  before_action :authenticate_user!, only: %i[new edit update]
+  before_action :authenticate_user!, only: %i[new edit update simple_rating]
   skip_before_action :verify_authenticity_token, only: [:simple_rating]
   respond_to :json
 
@@ -72,7 +72,7 @@ class NewsController < ApplicationController
     # Rails.logger.info "******** session[:news_id]= #{session[:news_id]} ***********"
     # Rails.logger.info "******** params[:news_id]= #{params[:news_id]} ***********"
     # Rails.logger.info "******** params[:rating].to_i= #{params[:rating].to_i} ***********"
-    return unless session[:news_id].to_i == params[:news_id].to_i
+    #return unless session[:news_id].to_i == params[:news_id].to_i
     return unless [-1, 1].include?(params[:rating].to_i)
 
     # Rails.logger.info "+++++++ ????? = #{[-1, 1].include?(params[:rating].to_i)} +++++++"
