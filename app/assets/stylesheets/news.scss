@@ -23,7 +23,13 @@
     font-weight: bold;
   }
 }
-
+.news-show {
+  width: 80px;
+  a, a:link, a:visited {
+    color: rgb(105, 92, 254);
+    text-decoration: none;
+  }
+}
 .heart-news{
   i.bx.bx-heart{
   margin-left: 0;
@@ -33,7 +39,8 @@
 }
 
 .heart-like{
-  color: red;
+  // color: red;
+  color: rgb(105, 92, 254);
 }
 
 .leftimg {

@@ -6,7 +6,7 @@ import {log_out} from '../Auth/authmethods';
 
 const AuthLoggedSubMenu = () => {
   const [name, setName] = React.useState(localStorage.getItem("username"));
-  console.log('SubMenu userame in storage ', localStorage.getItem("username"))
+  //console.log('SubMenu userame in storage ', localStorage.getItem("username"))
   const navigate = useNavigate();
   
   function handleAuthLogout() {

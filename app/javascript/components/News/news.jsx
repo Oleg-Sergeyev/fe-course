@@ -3,33 +3,20 @@ import { Card } from 'react-bootstrap';
 import CommentBox from '../Comments/CommentBox'
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import Likes from "../Comments/Likes";
 import contentParser from 'html-react-parser';
-
+localStorage.setItem("token", document.querySelector('meta[name="csrf-token"]').content);
 
 const News = () => {
+  let token = window.localStorage.getItem("token");
   const { id } = useParams();
-  
-  function setProps(id) {  
-    let all_news = localStorage.getItem("AllNews");
-    //console.log('all_news::', JSON.parse(all_news));
-    let res = {}
-    JSON.parse(all_news).forEach(element => {
-      console.log('element:', element);
-      if (element.id == id)
-        { 
-          res =  {"rating": element.simple_rating, "heart": element.heart}
-        }
-    });
-    return res;
-  }
-  let json_rating = setProps(id);
-  const [rating, setRating] = React.useState(json_rating.rating); 
-  const [heart, setHeart] = React.useState(json_rating.heart);
-  const [header, setHeader] = React.useState('None');
-  const [body, setBody] = React.useState('Empty');
-  //const [source, setSource] = React.useState('Empty');
-    React.useEffect(() => {
+  const [news, setNews] = React.useState({ 
+    header: '', 
+    body: '',
+    rating: 0,
+    heart: 0
+  })
+
+  function setData() {
       fetch(`/news/${id}.json`, {
         method: 'GET',
         headers: {
@@ -38,26 +25,74 @@ const News = () => {
       })
       .then(response => response.json())
       .then(data => {
-        console.log('Data :::', data);
-        setRating(data.simple_rating);
-        setHeart(data.heart);
-        setHeader(data.header);
-        setBody(data.body.body || 'Empty');
-        console.log('Success:', data);
+        console.log('Current news:', data);
+        setNews({
+          header: data.header, 
+          body: data.body.body || 'Empty',
+          rating: data.simple_rating,
+          heart: data.heart
+        })
       })
       .catch((error) => {
       console.error('Error:', error);
       });
-  }, []);
+  }
+
+  React.useEffect(() => {
+    setData();
+  }, [])
+
+  function setHeart(num){
+    if (num === 0){
+      return <Link onClick={handleClick} to="" ><i key={news.id} className='bx bx-heart'/></Link>
+    }else{
+      return <Link onClick={handleClick} to="" ><i key={news.id} className='bx bx-heart bxs-heart heart-like'/></Link>
+    }
+  }
+
+  function handleClick() {
+    let action = 1
+    fetch('/simple_rating', {
+      method: 'POST',
+      headers: {
+        'X-CSRF-Token': token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        rating: action,
+        news_id: id
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) { alert(data.error); }
+        else{
+          setNews({
+            ...news,
+            rating: data.simple_rating,
+            heart: data.heart
+          })
+        }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
 
   return (
     <div className="container">
       <Card className='text-center'>
         <Card.Header>
-          <div className='d-flex justify-content-evenly'> {header} <Likes likes={rating} news_id={id} heart={heart} heart_visible={true}/></div>
+          <div className='d-flex justify-content-evenly'> 
+            {news.header} 
+            <div className='d-flex justify-content-evenly news-show'>
+              <span className=''>{news.rating}</span>
+              <span className=''>{setHeart(news.heart)}</span>
+            </div>
+          </div>
         </Card.Header>
         <Card.Body>
-          {contentParser(body)}
+          {contentParser(news.body)}
         </Card.Body>
         <Card.Footer className='text-muted'>
           <CommentBox url='/api/v1/comments' news_id={id} />

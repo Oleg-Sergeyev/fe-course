@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import AuthLoggedSubMenu from './UserSubMenu';
 
 const TopMenu = () => {
-  console.log('TOP-MENU render')
+  //console.log('TOP-MENU render')
   return (
     <Nav className="navbar navbar-expand-lg">
       <div className="container-fluid">

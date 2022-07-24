@@ -5,7 +5,7 @@ export const get_current_user = () => {
         .then(
           (result) => {
             username = result.name
-            console.log('result.name ', result.name)
+            //console.log('result.name ', result.name)
             localStorage.clear;
             localStorage.setItem("username", result.name);
             localStorage.setItem("like", result.simple_rating);

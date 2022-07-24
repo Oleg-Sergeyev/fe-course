@@ -22,7 +22,7 @@ class CommentBox extends React.Component {
       .then(response => response.json())
       .then(data => {
         this.setState({ comments: data });
-        console.log('Success:', data);
+        console.log('Comments box:', data);
       })
       .catch((error) => {
         console.error('Error:', error);

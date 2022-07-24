@@ -7,7 +7,7 @@ class NewsController < ApplicationController
   respond_to :json
 
   def index
-    @news = News.all
+    @news = News.includes(:likes)
   end
 
   def new
@@ -36,9 +36,8 @@ class NewsController < ApplicationController
   end
 
   def show
-    @news = News.find(params[:id])
-    session[:news_id] ||= params[:id]
-    session[:flag] ||= 0
+    session[:news_id] = params[:id]
+    Rails.logger.info "******** session[:flag] in SHOW = #{session[:flag]} ***********"
   end
 
   def update
@@ -64,33 +63,36 @@ class NewsController < ApplicationController
   def set_news
     id = params[:news_id] || params[:id]
     @news = News.find(id)
-    # @news = News.with_attached_files.find(params[:id])
+    if current_user
+      @current_like_news = Like.where(news_id: id, user_id: current_user.id)
+      Rails.logger.info "******** @current_like_news.first= #{@current_like_news.first} ***********"
+      session[:flag] = @current_like_news.empty? ? 0 : 1
+    else
+      session[:flag] = 0
+      @current_like_news = nil
+    end
   end
 
   def simple_rating
-    # Rails.logger.info "******** session[:flag]= #{session[:flag]} ***********"
-    # Rails.logger.info "******** session[:news_id]= #{session[:news_id]} ***********"
-    # Rails.logger.info "******** params[:news_id]= #{params[:news_id]} ***********"
-    # Rails.logger.info "******** params[:rating].to_i= #{params[:rating].to_i} ***********"
-    #return unless session[:news_id].to_i == params[:news_id].to_i
-    return unless [-1, 1].include?(params[:rating].to_i)
-
-    # Rails.logger.info "+++++++ ????? = #{[-1, 1].include?(params[:rating].to_i)} +++++++"
-
-    # Rails.logger.info "******** session[:flag]= #{session[:flag]} ***********"
-    currnet_rating = @news.simple_rating
-
-    case session[:flag]
-    when 0
-      currnet_rating += 1
-      session[:flag] = 1
-    when 1
-      currnet_rating -= 1
+    current_rating = @news.simple_rating
+    if !current_user
       session[:flag] = 0
+      render json: { simple_rating: current_rating, heart: session[:flag]}
+      return
     end
-    @news.update(simple_rating: currnet_rating)
-    render json: { simple_rating: currnet_rating, heart: session[:flag]}
-  #  binding.pry
+
+    if !@current_like_news.empty?
+      Like.find_by(news_id: params[:news_id]).destroy
+      current_rating -= 1
+      @news.update(simple_rating: current_rating)
+      session[:flag] = 0
+    else
+      current_rating += 1
+      Like.create!(user_id: current_user.id, news_id: params[:news_id])
+      @news.update(simple_rating: current_rating)
+      session[:flag] = 1
+    end
+    render json: { simple_rating: current_rating, heart: session[:flag]}
   end
 
   private

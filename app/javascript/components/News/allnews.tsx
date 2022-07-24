@@ -16,7 +16,7 @@ const AllNews = () => {
       .then(data => {
         setArray(data);
         localStorage.setItem("AllNews", JSON.stringify(data));
-        console.log('Success:', data);
+        console.log('All news:', data);
       })
       .catch((error) => {
       console.error('Error:', error);
@@ -29,7 +29,8 @@ const AllNews = () => {
       td.push(<tr key={i}>
                 <td><span className='news-tr-td'><Link to={`/news/${array[i]["id"]}`}>{array[i]["date"]}</Link></span></td>
                 <td><span className='news-tr-td'><Link to={`/news/${array[i]["id"]}`}>{array[i]["header"]}</Link></span></td>
-                <td><span className='news-tr-td'><Likes likes={array[i]["simple_rating"]} heart_visible={false}/></span></td>
+                {/* <td><span className='news-tr-td'><Likes likes={array[i]["simple_rating"]} heart_visible={false}/></span></td> */}
+                <td><span className='news-tr-td'><Link to={`/news/${array[i]["id"]}`}>{array[i]["simple_rating"]}</Link></span></td>
               </tr>);
     }
     return td;
