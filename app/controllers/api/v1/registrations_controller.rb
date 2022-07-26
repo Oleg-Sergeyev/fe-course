@@ -3,11 +3,16 @@
 module Api
   module V1
     class RegistrationsController < Devise::RegistrationsController
+      before_action :authenticate_user!
       before_action :configure_permitted_parameters
       respond_to :json
 
       def new
         user = User.new(user_params)
+      end
+
+      def edit
+        @user = User.find(current_user.id)
       end
 
       def create

@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  def index; end
+  before_action :authenticate_user!, only: %i[index edit show update]
+  skip_before_action :verify_authenticity_token, only: [:index]
+  respond_to :json
+
+  def index
+    @user = current_user
+  end
 
   def edit
     @user = current_user

@@ -35,6 +35,7 @@ const AuthLoggedSubMenu = () => {
         { localStorage.getItem("username") }
       </a>
       <ul className="dropdown-menu dropdown-menu-end role" aria-labelledby="navbarDropdown">
+        <li><Link className="dropdown-item" to="/user/index">Профиль</Link></li>
         <li><Link className="dropdown-item" to="/">Локализация</Link></li>
         <li><hr className="dropdown-divider" /></li>
         <li><Link className="dropdown-item" onClick={handleAuthLogout} to="/">Выход</Link></li>
