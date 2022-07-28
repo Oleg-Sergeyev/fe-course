@@ -1,11 +1,19 @@
 import * as React from 'react';
 import {log_out} from '../Auth/authmethods';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Route, Routes, BrowserRouter } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import logo from '../../images/ruby-fiolent.png'
+import AllNews from '../News/allnews';
+import { createRoot } from 'react-dom/client';
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
+import CommentBox from '../Comments/CommentBox';
+
+
 import { Nav } from 'react-bootstrap';
 
 const LeftMenu = () => {
-
+    const queryClient = new QueryClient()
+    //const [allnews, setAllNews] = useState([]);
     const [name, setName] = React.useState(localStorage.getItem("username"));
     const navigate = useNavigate();
     const bodyNav = React.useRef();
@@ -13,7 +21,7 @@ const LeftMenu = () => {
     const searchboxRef = React.useRef();
     const modetextRef = React.useRef();
     const modeswitchRef = React.useRef();
-
+    const contentRef = React.useRef();
     // React.useEffect(() => {
     //     if (isLoading) {
     //         return
@@ -28,6 +36,8 @@ const LeftMenu = () => {
     // },[isLoading, data, error])
    
     React.useEffect(() => {
+      
+
       const toggle = toggleRef.current;
       const sidebar = bodyNav.current;
       toggle.addEventListener("click" , () =>{
@@ -55,6 +65,8 @@ const LeftMenu = () => {
     //   };
 
     })
+
+   
 
   function handleAuthLogout() {
     setName(log_out)
@@ -89,10 +101,10 @@ const LeftMenu = () => {
 
                 <ul className="menu-links">
                     <li className="nav-link">
-                        <a href="/user/news">
+                        <NavLink to="/user/news">
                             <i className='i bx bx-bar-chart-alt-2 icon' ></i>
                             <span className="text nav-text">Новости</span>
-                        </a>
+                        </NavLink>
                     </li>
 
                     <li className="nav-link">
@@ -159,6 +171,12 @@ const LeftMenu = () => {
     </nav>
     <section className="home">
       <div className="text">{localStorage.getItem("username")}</div>
+      <div className='content' ref={contentRef}>
+        <Routes>
+            <Route path="/user/news/*" element={<AllNews />} />
+            <Route path="/user/edit"/>
+        </Routes>
+      </div>
     </section>
     </div>
   );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import {log_out} from '../Auth/authmethods';
 //const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -35,7 +35,7 @@ const AuthLoggedSubMenu = () => {
         { localStorage.getItem("username") }
       </a>
       <ul className="dropdown-menu dropdown-menu-end role" aria-labelledby="navbarDropdown">
-        <li><Link className="dropdown-item" to="/user/index">Профиль</Link></li>
+        <li><NavLink className="dropdown-item" to="/user/">Профиль</NavLink></li>
         <li><Link className="dropdown-item" to="/">Локализация</Link></li>
         <li><hr className="dropdown-divider" /></li>
         <li><Link className="dropdown-item" onClick={handleAuthLogout} to="/">Выход</Link></li>

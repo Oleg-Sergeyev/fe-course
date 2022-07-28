@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes, BrowserRouter, Router } from 'react-router-dom';
 import NewAuthForm from './Auth/NewAuthForm'
 import News from './News/news';
 import AllNews from './News/allnews';
@@ -12,20 +12,34 @@ const queryClient = new QueryClient();
 localStorage.setItem("token", document.querySelector('meta[name="csrf-token"]').content);
 
 const App = () => {
-  
+  const[path, setPath] = React.useState(window.location.pathname)
+  const regexLeftMenu = new RegExp("^\/user\/.*");
+  const regexTopMenu = new RegExp("^((?!user).)*$");
+  let pathTopMenu = '/'
+  let pathLeftMenu = '/'
+  const Menu = () => {
+    console.log('location.pathname', regexLeftMenu.test(path))
+    if(regexLeftMenu.test(path)) {
+     // pathLeftMenu = path
+      return ( <LeftMenu />)
+    }
+    if(regexTopMenu.test(path)) {
+      //pathTopMenu = path
+      return ( <TopMenu />)
+    }
+  };
   return (<QueryClientProvider client={queryClient}>
             <BrowserRouter>
-
-              <TopMenu />
+              <Menu/>
                 <Routes>
-                  <Route path="/" element={<AllNews />} />
+                  <Route path="/" element={<AllNews/>}/>
                   <Route path="/news" element={<AllNews />} />
                   <Route path="/news/:id" element={<News />} />
                   <Route path="/users/sign_in" element={<NewAuthForm />} />
-                  <Route path="/user/index" element={<LeftMenu />} />
+                  {/* <Route path='/user/*' element={<LeftMenu />} /> */}
+                  <Route path='/user/news/*' element={<AllNews />}/>
                 </Routes>
-   
-            </BrowserRouter>
+             </BrowserRouter>
           </QueryClientProvider>
   );
 }
