@@ -25,7 +25,7 @@ export const get_current_user = () => {
   }
 
 export const log_out = () => {
-fetch("/api/v1/sign_out")
+  fetch("/api/v1/sign_out")
       .then(res => res.json())
       .then(
         (result) => {
@@ -33,6 +33,9 @@ fetch("/api/v1/sign_out")
           //   isLoaded: true,
           //   items: result.items
           // });
+          console.log('logout succses');
+          localStorage.clear;
+          localStorage.setItem("username", "guest");
         },
         // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
         // чтобы не перехватывать исключения из ошибок в самих компонентах.
@@ -43,8 +46,7 @@ fetch("/api/v1/sign_out")
           // });
         }
       )
-  localStorage.clear;
-  localStorage.setItem("username", "guest");
+
   return "guest";
 }
 

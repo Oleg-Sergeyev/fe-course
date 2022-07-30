@@ -4,11 +4,7 @@ import { useNavigate, Route, Routes, BrowserRouter } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
 import logo from '../../images/ruby-fiolent.png'
 import AllNews from '../News/allnews';
-import { createRoot } from 'react-dom/client';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
-import CommentBox from '../Comments/CommentBox';
-
-
 import { Nav } from 'react-bootstrap';
 
 const LeftMenu = () => {
@@ -65,13 +61,35 @@ const LeftMenu = () => {
     //   };
 
     })
-
    
 
   function handleAuthLogout() {
-    setName(log_out)
-    // navigate('/news');
+    fetch("/api/v1/sign_out")
+            .then(res => res.json())
+            .then(
+              (result) => {
+                console.log('logout succses');
+                localStorage.clear;
+                localStorage.setItem("username", "guest");
+                window.location.reload();
+                navigate('/news')
+              },
+              // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
+              // чтобы не перехватывать исключения из ошибок в самих компонентах.
+              (error) => {
+                // this.setState({
+                //   isLoaded: true,
+                //   error
+                // });
+              }
+            )
   }
+
+//   function handleAuthLogout() {
+//     log_out;
+//     window.location.reload();
+//     navigate('/news')
+//   }
 
   return (
     <div>

@@ -14,6 +14,12 @@ const AuthLoggedSubMenu = () => {
     navigate('/news');
   }
 
+  function handleProfile() {
+    navigate('/user/');
+    window.location.reload();
+  }
+  
+
   if (localStorage.getItem("username") == 'guest' || localStorage.getItem("username") === undefined){
   return (
     <li className="nav-item dropdown">
@@ -35,7 +41,7 @@ const AuthLoggedSubMenu = () => {
         { localStorage.getItem("username") }
       </a>
       <ul className="dropdown-menu dropdown-menu-end role" aria-labelledby="navbarDropdown">
-        <li><NavLink className="dropdown-item" to="/user/">Профиль</NavLink></li>
+        <li><Link className="dropdown-item" to="/" onClick={handleProfile} >Профиль</Link></li>
         <li><Link className="dropdown-item" to="/">Локализация</Link></li>
         <li><hr className="dropdown-divider" /></li>
         <li><Link className="dropdown-item" onClick={handleAuthLogout} to="/">Выход</Link></li>

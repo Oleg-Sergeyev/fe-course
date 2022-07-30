@@ -18,10 +18,10 @@ class NewsController < ApplicationController
     @news = News.new(news_params)
     respond_to do |format|
       if @news.save
-        format.html { redirect_to user_news_index_path, notice: 'News was successfully created.' }
+        #format.html { redirect_to user_news_index_path, notice: 'News was successfully created.' }
         format.json { render :show, status: :created, location: @news }
       else
-        format.html { redirect_to  user_news_new_path, status: :unprocessable_entity }
+        #format.html { redirect_to  user_news_new_path, status: :unprocessable_entity }
         format.json { render json: @news.errors, status: :unprocessable_entity }
       end
     end
@@ -43,10 +43,10 @@ class NewsController < ApplicationController
   def update
     respond_to do |format|
       if @news.update(news_params)
-        format.html { redirect_to user_news_index_path, notice: 'News was successfully updated.' }
+        #format.html { redirect_to user_news_index_path, notice: 'News was successfully updated.' }
         format.json { render :show, status: :ok, location: @news }
       else
-        format.html { redirect_to  user_news_new_path, status: :unprocessable_entity }
+        #format.html { redirect_to  user_news_new_path, status: :unprocessable_entity }
         format.json { render json: @news.errors, status: :unprocessable_entity }
       end
     end
@@ -55,7 +55,7 @@ class NewsController < ApplicationController
   def destroy
     @news.destroy
     respond_to do |format|
-      format.html { redirect_to user_news_path, notice: 'News was successfully destroyed.' }
+      #format.html { redirect_to user_news_path, notice: 'News was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

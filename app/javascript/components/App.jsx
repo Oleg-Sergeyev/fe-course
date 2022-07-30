@@ -15,16 +15,12 @@ const App = () => {
   const[path, setPath] = React.useState(window.location.pathname)
   const regexLeftMenu = new RegExp("^\/user\/.*");
   const regexTopMenu = new RegExp("^((?!user).)*$");
-  let pathTopMenu = '/'
-  let pathLeftMenu = '/'
   const Menu = () => {
     console.log('location.pathname', regexLeftMenu.test(path))
-    if(regexLeftMenu.test(path)) {
-     // pathLeftMenu = path
+    if(regexLeftMenu.test(path) && localStorage.getItem("username") !='guest') {
       return ( <LeftMenu />)
     }
     if(regexTopMenu.test(path)) {
-      //pathTopMenu = path
       return ( <TopMenu />)
     }
   };
