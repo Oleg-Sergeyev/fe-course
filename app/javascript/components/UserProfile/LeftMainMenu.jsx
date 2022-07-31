@@ -4,10 +4,12 @@ import { useNavigate, Route, Routes, BrowserRouter } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
 import logo from '../../images/ruby-fiolent.png'
 import AllNews from '../News/allnews';
+import News from '../News/news'
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import { Nav } from 'react-bootstrap';
 
 const LeftMenu = () => {
+    
     const queryClient = new QueryClient()
     //const [allnews, setAllNews] = useState([]);
     const [name, setName] = React.useState(localStorage.getItem("username"));
@@ -30,7 +32,11 @@ const LeftMenu = () => {
     //         setName(data.name);
     //         localStorage.setItem("name", data.name);
     // },[isLoading, data, error])
-   
+    // React.useEffect(() => {
+    //     return () => {
+    //       (document.getElementById('allnews')).unmount();
+    //     };
+    //   }, []); 
     React.useEffect(() => {
       
 
@@ -187,12 +193,13 @@ const LeftMenu = () => {
         </div>
 
     </nav>
-    <section className="home">
+    <section className="home ms-2">
       <div className="text">{localStorage.getItem("username")}</div>
       <div className='content' ref={contentRef}>
         <Routes>
-            <Route path="/user/news/*" element={<AllNews />} />
-            <Route path="/user/edit"/>
+            <Route path="/user/news" element={<AllNews edit={true}/>} />
+            <Route path="/user/news/edit/:id" element={<News edit={true}/>} />
+            {/* <Route path="/user/edit"/> */}
         </Routes>
       </div>
     </section>

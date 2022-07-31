@@ -4,11 +4,14 @@ import CommentBox from '../Comments/CommentBox'
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import contentParser from 'html-react-parser';
+
 localStorage.setItem("token", document.querySelector('meta[name="csrf-token"]').content);
 
-const News = () => {
+const News = (props) => {
   let token = window.localStorage.getItem("token");
   const { id } = useParams();
+  console.log('NEWS props.edit = ', props.edit)
+  console.log('id = ', id)
   const [news, setNews] = React.useState({ 
     header: '', 
     body: '',
@@ -79,29 +82,50 @@ const News = () => {
     });
   }
 
-  return (
-    <div className="container">
-      <Card className='text-center'>
-        <Card.Header>
-          <div className='d-flex justify-content-evenly'> 
-            {news.header} 
-            <div className='d-flex justify-content-evenly news-show'>
-              <span className=''>{news.rating}</span>
-              <span className=''>{setHeart(news.heart)}</span>
+  if (props.edit == true){
+    return (
+      <div className="container">
+        <Card className='text-center'>
+          <Card.Header>
+            <div className='d-flex justify-content-evenly'> 
+              {news.header} 
+              <div className='d-flex justify-content-evenly news-show'>
+                <span className=''>{news.rating}</span>
+                <span className=''>{setHeart(news.heart)}</span>
+              </div>
             </div>
-          </div>
-        </Card.Header>
-        <Card.Body>
-          {contentParser(news.body)}
-        </Card.Body>
-        <Card.Footer className='text-muted'>
-          <CommentBox url='/api/v1/comments' news_id={id} />
-        </Card.Footer>
-      </Card>
-      <div className="d-flex justify-content-center bg-white back">
-        <Link className="link-secondary" to="/news">Назад</Link>
+          </Card.Header>
+          <Card.Body>
+            {contentParser(news.body)}
+          </Card.Body>
+        </Card>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="container">
+        <Card className='text-center'>
+          <Card.Header>
+            <div className='d-flex justify-content-evenly'> 
+              {news.header} 
+              <div className='d-flex justify-content-evenly news-show'>
+                <span className=''>{news.rating}</span>
+                <span className=''>{setHeart(news.heart)}</span>
+              </div>
+            </div>
+          </Card.Header>
+          <Card.Body>
+            {contentParser(news.body)}
+          </Card.Body>
+          <Card.Footer className='text-muted'>
+            <CommentBox url='/api/v1/comments' news_id={id} />
+          </Card.Footer>
+        </Card>
+        <div className="d-flex justify-content-center bg-white back">
+          <Link className="link-secondary" to="/news">Назад</Link>
+        </div>
+      </div>
+    );
+  }
 };
 export default News;
